@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util-2.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd ">
+
+    <context:component-scan base-package="cn.gok.controller"></context:component-scan>
+    <mvc:annotation-driven/> <!--注解转换驱动开启-->
+    <!--如果发现是静态资源的请求，就将该请求转由Web应用服务器默认的Servlet处理，
+    如果不是静态资源的请求，才由DispatcherServlet继续处理。-->
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
+    <!--配置视图解析器 InternalResourceViewResolver-->
+<!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+<!--    <property name="prefix" value="/"></property>-->
+<!--    <property name="suffix" value=".html"></property>-->
+<!--</bean>-->
+
+
+
+    <!--拦截器配置-->
+<mvc:interceptors>
+    <mvc:interceptor>
+        <mvc:mapping path="/**"/> <!--/*代表只拦截一层，/**代表拦截任意层-->
+        <bean id="Interceptor" class="cn.gok.interceptor.Interceptor"></bean>
+    </mvc:interceptor>
+</mvc:interceptors>
+
+
+
+
+
+
+</beans>

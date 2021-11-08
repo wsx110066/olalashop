@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+       <!-- 主配置文件configuration-->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTDConfig3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+        <!--configuration 里面的子标签有顺序要求-->
+<configuration>
+
+    <settings>
+        <!--STDOUT_LOGGING是标准日志。mybatis自带-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--cacheEnabled 开启全局（二级）缓存  默认不开启二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <plugins>
+        <!--com.github.pagehelper为PageHelper类所在包名-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+        </plugin>
+    </plugins>
+
+
+
+
+
+</configuration>
+

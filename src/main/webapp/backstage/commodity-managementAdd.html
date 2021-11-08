@@ -1,0 +1,509 @@
+<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="Bookmark" href="/favicon.ico">
+    <link rel="Shortcut Icon" href="/favicon.ico"/>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin"/>
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css"/>
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <!--/meta 作为公共模版分离出去-->
+
+    <title>商品分类 - H-ui.admin v3.1</title>
+    <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+    <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+</head>
+<body>
+<article class="page-container">
+    <form action="" method="post" class="form form-horizontal" id="form-member-add">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>商品分类ID：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input readonly="readonly" type="text" class="input-text" value="" placeholder="" id="categoryId"
+                       name="categoryId">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>商品分类名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="categoryName" name="categoryName">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>关键字：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="keywords" name="keywords">
+            </div>
+        </div>
+
+        <div class="row cl" id="first">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>分类级别：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="parentId" id="parentId" onchange="changeHtml()">
+					<option value="" selected>请选择分类级别</option>
+					<option value="1">一级分类</option>
+					<option value="2">二级分类</option>
+					<option value="3">三级分类</option>
+				</select>
+				</span>
+            </div>
+        </div>
+
+        <div class="row cl" id="second" style="display: none">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>一级分类：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="parentId" id="firstParentId" onchange="changeHtml()">
+					<option value="" id="select1" selected>一类分类名称</option>
+                    <!--					<option value="1">家用电器</option>-->
+                    <!--					<option value="2">手机</option>-->
+                    <!--					<option value="3">运营商</option>-->
+                    <!--                    <option value="4">数码</option>-->
+				</select>
+				</span>
+            </div>
+        </div>
+
+        <div class="row cl" id="third" style="display: none">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>二级分类：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="parentId" id="SecondParentId" onchange="changeHtml()">
+					<option value="" id="select2" selected>二类分类名称</option>
+                    <!--					<option value="1">电视</option>-->
+                    <!--					<option value="2">空调</option>-->
+                    <!--					<option value="3">洗衣机</option>-->
+                    <!--                    <option value="4">冰箱</option>-->
+                    <!--                    <option value="5">厨卫大电</option>-->
+                    <!--                    <option value="6">厨房小电</option>-->
+                    <!--                    <option value="7">生活电器</option>-->
+                    <!--                    <option value="8">个护健康</option>-->
+                    <!--                    <option value="9">视听影音</option>-->
+				</select>
+				</span>
+            </div>
+        </div>
+
+        <div class="row cl" id="forth" style="display: none">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>三级分类：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="parentId" id="ThirdParentId" onchange="changeHtml()">
+					<option value="" id="select3" selected>三类分类名称</option>
+                    <!--					<option value="1">超薄电视</option>-->
+                    <!--					<option value="2">全面屏电视</option>-->
+                    <!--					<option value="3">智能电视</option>-->
+                    <!--                    <option value="4">教育电视</option>-->
+				</select>
+				</span>
+            </div>
+        </div>
+
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>商品分类描述：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="catyDesc" name="catyDesc">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">商品分类排序：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" name="sortOrl" id="sortOrl">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>是否显示在导航栏：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="isShowInNav" id="isShowInNav">
+					<option value="" selected>请选择是否显示在导航栏</option>
+					<option value="1">是</option>
+					<option value="2">否</option>
+				</select>
+				</span>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>请输入价格的区间范围：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="grade" id="grade">
+					<option value="" selected>请选择你要的区间范围</option>
+					<option value="1">0～300</option>
+					<option value="2">300～600</option>
+                    <option value="2">600～900</option>
+				</select>
+				</span>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>请选择是否展示：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="isShow" id="isShow">
+					<option value="" selected>请选择是否展示</option>
+					<option value="0">是</option>
+					<option value="1">否</option>
+				</select>
+				</span>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>请选择是否有效：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="isEnabled" id="isEnabled">
+					<option value="" selected>请选择是否有效</option>
+					<option value="0">是</option>
+					<option value="1">否</option>
+				</select>
+				</span>
+            </div>
+        </div>
+        <!-- <div class="row cl">
+             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>是否现在在到：</label>
+             <div class="formControls col-xs-8 col-sm-9">
+                 <input type="text" class="input-text" value="" placeholder="" id="userMobile" name="userMobile">
+             </div>
+         </div>
+         <div class="row cl">
+             <label class="form-label col-xs-4 col-sm-3">邮箱：</label>
+             <div class="formControls col-xs-8 col-sm-9">
+                 <input type="text" class="input-text" placeholder="@" name="email" id="email">
+             </div>
+         </div>-->
+        <!--		<div class="row cl">
+                    <label class="form-label col-xs-4 col-sm-3">附件：</label>
+                    <div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
+                        <input class="input-text upload-url" type="text" name="uploadfile" id="uploadfile" readonly nullmsg="请添加附件！" style="width:200px">
+                        <a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
+                        <input type="file" multiple name="file-2" class="input-file">
+                        </span> </div>
+                </div>-->
+        <!--<div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">所在城市：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select class="select" size="1" name="city">
+					<option value="" selected>请选择城市</option>
+					<option value="福州">福州</option>
+					<option value="厦门">厦门</option>
+					<option value="北京">北京</option>
+					<option value="上海">上海</option>
+					<option value="广州">广州</option>
+				</select>
+				</span></div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">备注：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                &lt;!&ndash;onKeyUp="$.Huitextarealength(this,100)"&ndash;&gt;
+                <textarea name="remark" cols="" rows="" class="textarea" placeholder="说点什么...最少输入10个字符"></textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+            </div>
+        </div>-->
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.skin-minimal input').iCheck({
+            checkboxClass: 'icheckbox-blue',
+            radioClass: 'iradio-blue',
+            increaseArea: '20%'
+        });
+
+        var id = getParamValue("id");
+
+        init(id);
+
+        $("#form-member-add").validate({
+            rules: {
+                customerName: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 16
+                },
+                realName: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 16
+                },
+                gender: {
+                    required: true,
+                },
+                identyCardType: {
+                    required: true,
+                },
+                identyCardNo: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 21,
+                    isIdCardNo: true
+                },
+                userMobile: {
+                    required: true,
+                    isMobile: true,
+                },
+                email: {
+                    required: true,
+                    email: true,
+                }
+
+            },
+            onkeyup: false,
+            focusCleanup: true,
+            success: "valid",
+            submitHandler: function (form) {
+                var index = parent.layer.getFrameIndex(window.name);
+                /*
+                $(form).ajaxSubmit({
+                    type: 'post',
+                    url: '/olalashop/memberApi/saveMember.do',
+                    async: false,
+                    data: {
+                        params: JSON.stringify($(form).serializeObject())
+                    },
+                    success: function (data) {
+
+                        if (data.respData.respCode == 10000) {
+                            layer.msg('信息保存成功!', {icon: 6, time: 1000});
+                            window.location.href = "member-list.html";
+                            parent.layer.close(index);
+                            // if (data.respData.result == 1) {
+                            //     layer.msg('信息保存成功!', {icon: 6, time: 1000});
+                            //     window.location.href = "member-list.html";
+                            // }
+
+                        } else {
+                            layer.msg(data.respData.respMsg, {icon: 6, time: 1000});
+                            window.location.href = "member-list.html";
+                            // parent.$('.btn-refresh').click();
+                        }
+
+                    },
+                    error: function (data) {
+                        layer.msg('服务异常，请联系管理员处理!', {icon: 6, time: 1000});
+                    }
+                });*/
+            }
+        });
+    });
+
+    $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
+    /**
+     * 选中分类级别改变页面显示内容
+     */
+
+    function changeHtml() {
+        var changeId = $("#parentId").val();
+        if (changeId == '') {
+            $("#second").hide();
+            $("#third").hide();
+            $("#forth").hide();
+        } else if (changeId == 1) {
+            //选择一类商品展示页面
+            $("#second").show();
+
+            $("#firstParentId").click(selectFirst());
+
+
+        } else if (changeId == 2) {
+            $("#second").show();
+            $("#third").show();
+            $("#firstParentId").click(selectFirst());
+            $("#third").click(selectSecond());
+
+        } else if (changeId == 3) {
+            $("#second").show();
+            $("#third").show();
+            $("#forth").show();
+            $("#firstParentId").click(selectFirst());
+            $("#third").click(selectSecond());
+            $("#forth").click(selectThird())
+        }
+    }
+
+    /**
+     * 查询一类分类列表中的所有数据，即商品分类表中ParentId = -1 的数据
+     */
+    function selectFirst() {
+
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/olalashop/goods/querycategroy.do",
+            dataType: "JSON",
+            success: function (data) {
+
+                if (data.respData.respCode == 200) {
+                    var arr = data.respData.result;
+
+
+                    for (var i = 0; i < arr.length; i++) {
+                        //设置每个box的状态为选中 checked
+                        categoryName = arr[i].categoryName;
+                        var option = $("<option value=" + i + ">" + categoryName + "</option>")
+                        $("#select1").after(option);
+                        console.log(categoryName);
+                    }
+
+                } else {
+                    //添加失败
+                    alert("失败")
+                }
+            }
+        });
+    }
+
+    /**
+     * 查询一类分类列表中的所有数据，即商品分类表中ParentId = 1或2 的数据
+     */
+    function selectSecond() {
+
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/olalashop/goods/querycategroysecond.do",
+            dataType: "JSON",
+            success: function (data) {
+
+                if (data.respData.respCode == 200) {
+                    var arr = data.respData.result;
+
+
+                    for (var i = 0; i < arr.length; i++) {
+                        //设置每个box的状态为选中 checked
+                        categoryName = arr[i].categoryName;
+                        var option = $("<option value=" + i + ">" + categoryName + "</option>")
+                        $("#select2").after(option);
+                        console.log(categoryName);
+                    }
+
+                } else {
+                    //添加失败
+                    alert("失败")
+                }
+            }
+        });
+    }
+
+    /**
+     * 查询一类分类列表中的所有数据，即商品分类表中ParentId != -1,1,2 的数据
+     */
+    function selectThird() {
+
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/olalashop/goods/querycategroythird.do",
+            dataType: "JSON",
+            success: function (data) {
+
+                if (data.respData.respCode == 200) {
+                    var arr = data.respData.result;
+
+
+                    for (var i = 0; i < arr.length; i++) {
+                        //设置每个box的状态为选中 checked
+                        categoryName = arr[i].categoryName;
+                        var option = $("<option value=" + i + ">" + categoryName + "</option>")
+                        $("#select3").after(option);
+                        console.log(categoryName);
+                    }
+
+                } else {
+                    //添加失败
+                    alert("失败")
+                }
+            }
+        });
+    }
+
+
+    //获取表格id值
+    function getParamValue(param) {
+        var url = location.href;
+        var i = url.indexOf('?');
+        if (i == -1) return;
+        var querystr = url.substr(i + 1);
+        var arr1 = querystr.split('&');
+        var arr2 = new Object();
+        for (i in arr1) {
+            var ta = arr1[i].split('=');
+            arr2[ta[0]] = ta[1];
+        }
+        return arr2[param];
+    }
+
+    //查询数据
+    function init(id) {
+        var service = {};
+        service.goodsId = id;
+
+        if (id != null) {
+            $("#first").css("display", "none");
+        }
+
+        $.ajax({
+            type: "post",
+            url: '/olalashop/goods/queryByPrimaryKey.do',
+            data: {
+                params: JSON.stringify(service)
+            },
+            dataType: 'json',
+            success: function (data) {
+                var goods = data.respData.result;
+                $("#categoryId").val(goods.goodsId);
+                $("#categoryName").val(goods.goodsName);
+                $("#keywords").val(goods.keywords);
+            }
+        });
+    }
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>
