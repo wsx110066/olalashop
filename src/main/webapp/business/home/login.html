@@ -43,7 +43,7 @@
 					  <span id="errorMsg" style="background-color: #ec1227"></span>
                     </div>
                     <div class="am-cf">
-                        <input value="登 录" class="am-btn am-btn-primary am-btn-sm" onclick="login();">
+                        <input type="button" value="登 录" class="am-btn am-btn-primary am-btn-sm" onclick="login();">
                     </div>
                 </form>
             </div>
@@ -99,10 +99,7 @@
 				}else{
 					location.href = "/olalashop/cntApi/info.do";
 				}
-			},
-			error:function (){
-			    alert("传入失败")
-            }
+			}
 		});
 	}
 </script>

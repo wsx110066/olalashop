@@ -17,9 +17,15 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public int insertUserRegisterService(String email, String Password) {
-        return userDao.insertUserRegister(email,Password);
+    public int insertUserByEmailRegister(String email, String Password) {
+        return userDao.insertUserByEmailRegister(email, Password);
     }
+
+    @Override
+    public int insertUserByMoblieRegister(String mobile, String Password) {
+        return userDao.insertUserByMoblieRegister(mobile, Password);
+    }
+
 
     @Override
     public UserLogin queryOneByName(String name) {

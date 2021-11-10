@@ -4,6 +4,7 @@ import cn.gok.beans.UserLogin;
 
 public interface UserService {
     public UserLogin queryUserLoginService(String UserName,String Password);
-    public int insertUserRegisterService(String email,String Password);
+    public int insertUserByEmailRegister(String email,String Password);
+    public int insertUserByMoblieRegister(String mobile,String Password);
     public UserLogin queryOneByName(String name);
 }

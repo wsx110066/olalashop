@@ -17,11 +17,16 @@
         select * from c_login where LOGIN_NAME =#{name} and PASSWORD = #{password}
     </select>
 
-    <insert id="insertUserRegister">
+    <insert id="insertUserByEmailRegister">
         insert into c_login values(DEFAULT ,#{email},#{password},default ,default )
+    </insert>
+
+    <insert id="insertUserByMoblieRegister">
+        insert into c_login values(DEFAULT ,#{mobile},#{password},default ,default )
     </insert>
 
     <select id="queryUserByName" resultMap="resultMapUser">
         select * from c_login where LOGIN_NAME = #{name}
     </select>
+
 </mapper>
