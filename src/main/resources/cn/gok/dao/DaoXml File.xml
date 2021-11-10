@@ -5,7 +5,7 @@
 
 <mapper namespace="cn.gok.dao.UserDao">
     
-    <resultMap id="resultMapUser" type="cn.goktech.beans.User">
+    <resultMap id="resultMapUser" type="cn.gok.beans.UserLogin">
         <result column="CUSTOMER_ID" property="UserID"></result>
         <result column="LOGIN_NAME" property="UserName"></result>
         <result column="PASSWORD" property="PassWord"></result>
@@ -20,4 +20,8 @@
     <insert id="insertUserRegister">
         insert into c_login values(DEFAULT ,#{email},#{password},default ,default )
     </insert>
+
+    <select id="queryUserByName" resultMap="resultMapUser">
+        select * from c_login where LOGIN_NAME = #{name}
+    </select>
 </mapper>
