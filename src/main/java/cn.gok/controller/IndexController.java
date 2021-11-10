@@ -14,7 +14,8 @@ public class IndexController {
         return "business/home/index";
     }
 
- 
+
+
 
 }
 
