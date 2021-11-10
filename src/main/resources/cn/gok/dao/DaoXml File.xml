@@ -13,7 +13,11 @@
         <result column="MODIFIED_TIME" property="classid"></result>
     </resultMap>
     
-    <select id="queryUserName" resultMap="resultMapUser" >
+    <select id="queryUserLogin" resultMap="resultMapUser" >
         select * from c_login where LOGIN_NAME =#{name} and PASSWORD = #{password}
     </select>
+
+    <insert id="insertUserRegister">
+        insert into c_login values(DEFAULT ,#{email},#{password},default ,default )
+    </insert>
 </mapper>

@@ -12,6 +12,11 @@ public class UserServiceImp implements UserService {
 
     @Override
     public int queryUserLoginService(String UserName, String Password) {
-        return 0;
+        return userDao.queryUserLogin(UserName,Password);
+    }
+
+    @Override
+    public int insertUserRegisterService(String email, String Password) {
+        return userDao.insertUserRegister(email,Password);
     }
 }

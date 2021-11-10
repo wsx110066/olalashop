@@ -7,18 +7,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/olalashop/cntApi")
+@RequestMapping("/cntApi")
 public class UserController {
     @Autowired
     UserService userService;
     @ResponseBody
     @RequestMapping("/login.do")
-    public int Login(String userName,String password){
-        int status;
+    public String Login(String userName,String password){
+        int status=0;
         status = userService.queryUserLoginService(userName,password);
         if (status <1){
             status = -10000;
         }
-        return status;
+
+        return Integer.toString(status);
     }
+    @ResponseBody
+    @RequestMapping("/register.do")
+    public String Register(){
+        int status=0;
+        return Integer.toString(status);
+    }
+
 }
