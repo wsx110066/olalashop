@@ -24,8 +24,10 @@ public class UserController {
     }
     @ResponseBody
     @RequestMapping("/register.do")
-    public String Register(){
+    public String Register(String email,String password){
         int status=0;
+        status = userService.insertUserRegisterService(email, password);
+
         return Integer.toString(status);
     }
 
