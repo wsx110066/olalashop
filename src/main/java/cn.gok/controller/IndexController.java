@@ -14,20 +14,7 @@ public class IndexController {
         return "business/home/index";
     }
 
-        @RequestMapping("/test")
-    public String sayHello1(ModelMap map){
-                    map.put("userName","小明");
-                    map.put("userAge",23);
-                    return "test";
-                 }
 
-
-
-    @RequestMapping("/test1")
-    public String sayHello2(){
-
-        return "business/home/test1";
-    }
 
 }
 
