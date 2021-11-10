@@ -19,7 +19,7 @@ public class UserController {
         if (status <1){
             status = -10000;
         }
-
+        System.out.println(status);
         return Integer.toString(status);
     }
     @ResponseBody
