@@ -9,8 +9,8 @@
         <result column="CUSTOMER_ID" property="UserID"></result>
         <result column="LOGIN_NAME" property="UserName"></result>
         <result column="PASSWORD" property="PassWord"></result>
-        <result column="USER_STATUS" property="ModifiedTime"></result>
-        <result column="MODIFIED_TIME" property="classid"></result>
+        <result column="USER_STATUS" property="UserStatus"></result>
+        <result column="MODIFIED_TIME" property="ModifiedTime"></result>
     </resultMap>
     
     <select id="queryUserLogin" resultMap="resultMapUser" >

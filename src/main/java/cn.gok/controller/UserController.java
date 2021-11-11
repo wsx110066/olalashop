@@ -17,6 +17,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/login.do")
     public String Login(String userName, String password, Model model){
+        System.out.println("调用login方法");
         String status="00";
         UserLogin user = userService.queryUserLoginService(userName,password);
         if (user == null){
@@ -32,6 +33,7 @@ public class UserController {
     @RequestMapping("/register.do")
     public String Register(String email,String pwd,String mobile){
         int status=0;
+        //判断注册状态
         if (email==userService.queryOneByName(email).getUserName()|| mobile==userService.queryOneByName(mobile).getUserName()){
             status=1;
         }else {

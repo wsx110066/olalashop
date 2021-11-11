@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.IGoodDao">
+    <resultMap id="resultMapGood" type="cn.gok.beans.Good">
+        <result column="GOODS_ID" property="GoodID"></result>
+        <result column="GOODS_SN" property="GoodSN"></result>
+        <result column="GOODS_NAME" property="GoodName"></result>
+        <result column="GOODS_TITLE" property="GoodTitle"></result>
+        <result column="KEYWORDS" property="KeyWords"></result>
+        <result column="CATY_ID" property="CatyID"></result>
+        <result column="CATY_SN" property="CatySN"></result>
+    </resultMap>
+
+</mapper>
