@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/index")
 public class IndexController {
 
-    //跳转到主页
+    /**
+     * 跳转到主页
+     * @return
+     */
     @RequestMapping("/init.do")
     public String init(){
         return "business/home/index";
     }
 
- 
+
+
 
 }
 
