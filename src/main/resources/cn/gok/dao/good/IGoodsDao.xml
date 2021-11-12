@@ -37,5 +37,11 @@
         <result column="UPDATE_BY" property="updateBy"/>
     </resultMap>
 
+    <select id="queryGoodsByGoodsId" resultMap="resultMapGoods">
+        select *
+        from g_goods
+        where GOODS_ID = #{goodsId}
+    </select>
+
 </mapper>
 

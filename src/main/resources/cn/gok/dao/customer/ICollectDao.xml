@@ -16,6 +16,12 @@
         <result column="IS_CANCEL" property="cancelIs"/>
         <result column="MODIFIED_TIME" property="modifiedTime"/>
     </resultMap>
+    <select id="queryCollectsByCustomerId" resultMap="resultMapCollect">
+        select *
+        from c_collect
+        where CUSTOMER_ID = #{customerId}
+    </select>
+
 
 </mapper>
 

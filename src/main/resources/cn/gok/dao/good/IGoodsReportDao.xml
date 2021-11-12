@@ -13,5 +13,10 @@
         <result column="COMMEND_SCORE" property="commendScore"/>
     </resultMap>
 
+    <select id="queryGoodsReportByGoodsId" resultMap="resultMapGoodsReport">
+        select *
+        from g_goods_report
+        where GOODS_ID = #{goodsId}
+    </select>
 </mapper>
 

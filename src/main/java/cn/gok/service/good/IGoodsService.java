@@ -1,13 +1,12 @@
-package cn.gok.dao.good;
+package cn.gok.service.good;
 
 import cn.gok.beans.good.Goods;
-import org.springframework.stereotype.Repository;
+import cn.gok.beans.good.GoodsReport;
 
 /**
  * @author 14489
  */
-@Repository
-public interface IGoodsDao {
+public interface IGoodsService {
 
     /**
      * 通过商品id查询商品
