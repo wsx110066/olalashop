@@ -36,7 +36,7 @@ public class Collect {
     /**
      * 是否过期 0未过期 1过期
      */
-    private boolean isExpires;
+    private boolean expiresIs;
 
     /**
      * 过期时间
@@ -46,7 +46,7 @@ public class Collect {
     /**
      * 是否取消收藏 0否 1是
      */
-    private boolean isCancel;
+    private boolean cancelIs;
 
     /**
      * 最后修改时间
@@ -96,12 +96,12 @@ public class Collect {
         this.addTime = addTime;
     }
 
-    public boolean isExpires() {
-        return isExpires;
+    public boolean isExpiresIs() {
+        return expiresIs;
     }
 
-    public void setExpires(boolean expires) {
-        isExpires = expires;
+    public void setExpiresIs(boolean expiresIs) {
+        this.expiresIs = expiresIs;
     }
 
     public Timestamp getExpiresDate() {
@@ -112,12 +112,12 @@ public class Collect {
         this.expiresDate = expiresDate;
     }
 
-    public boolean isCancel() {
-        return isCancel;
+    public boolean isCancelIs() {
+        return cancelIs;
     }
 
-    public void setCancel(boolean cancel) {
-        isCancel = cancel;
+    public void setCancelIs(boolean cancelIs) {
+        this.cancelIs = cancelIs;
     }
 
     public Timestamp getModifiedTime() {
@@ -136,9 +136,9 @@ public class Collect {
                 ", goodsId='" + goodsId + '\'' +
                 ", businessId='" + businessId + '\'' +
                 ", addTime=" + addTime +
-                ", isExpires=" + isExpires +
+                ", expiresIs=" + expiresIs +
                 ", expiresDate=" + expiresDate +
-                ", isCancel=" + isCancel +
+                ", cancelIs=" + cancelIs +
                 ", modifiedTime=" + modifiedTime +
                 '}';
     }

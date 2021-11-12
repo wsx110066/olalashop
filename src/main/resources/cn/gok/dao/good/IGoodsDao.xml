@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--映射文件mapper-->
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.good.IGoodsDao">
+    <resultMap id="resultMapGoods" type="cn.gok.beans.good.Goods">
+        <id column="GOODS_ID" property="goodsId"/>
+        <result column="GOODS_SN" property="goodsSn"/>
+        <result column="GOODS_NAME" property="goodsName"/>
+        <result column="GOODS_TITLE" property="goodsTitle"/>
+        <result column="KEYWORDS" property="keywords"/>
+        <result column="CATY_ID" property="catyId"/>
+        <result column="CATY_SN" property="catySn"/>
+        <result column="BUSINESS_SN" property="businessSn"/>
+        <result column="EFFECTIVE_DATE" property="effectiveDate"/>
+        <result column="EXPIRY_DAYS" property="expiryDays"/>
+        <result column="GOODS_BRIEF" property="goodsBrief"/>
+        <result column="GOODS_DESC" property="goodsDesc"/>
+        <result column="MARKET_PRICE" property="marketPrice"/>
+        <result column="DISCOUNT" property="discount"/>
+        <result column="SHOP_PRICE" property="shopPrice"/>
+        <result column="COST_PRICE" property="costPrice"/>
+        <result column="PROMOTE_PRICE" property="promotePrice"/>
+        <result column="PROMOTE_START_DATE" property="promoteStartDate"/>
+        <result column="PROMOTE_END_DATE" property="promoteEndDate"/>
+        <result column="COUPON_SN" property="couponSn"/>
+        <result column="IS_DEL" property="delIs"/>
+        <result column="IS_ONSALE" property="onSaleOn"/>
+        <result column="IS_COMMENT" property="commentIs"/>
+        <result column="SHIP_FEE" property="shipFee"/>
+        <result column="SORT_ORL" property="sortOrl"/>
+        <result column="CREATE_TIME" property="createTime"/>
+        <result column="CREATE_BY" property="createBy"/>
+        <result column="UPDATE_TIME" property="updateTime"/>
+        <result column="UPDATE_BY" property="updateBy"/>
+    </resultMap>
+
+</mapper>
+

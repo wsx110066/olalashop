@@ -129,19 +129,19 @@ public class Goods {
     /**
      * 是否删除 0否 1是
      */
-    private int isDel;
+    private int delIs;
 
 
     /**
      * 是否开售 1是 0否
      */
-    private int isOnsale;
+    private int onSaleOn;
 
 
     /**
      * 是否允许评论 0否 1是
      */
-    private int isComment;
+    private int commentIs;
 
 
     /**
@@ -342,28 +342,28 @@ public class Goods {
         this.couponSn = couponSn;
     }
 
-    public int getIsDel() {
-        return isDel;
+    public int getDelIs() {
+        return delIs;
     }
 
-    public void setIsDel(int isDel) {
-        this.isDel = isDel;
+    public void setDelIs(int delIs) {
+        this.delIs = delIs;
     }
 
-    public int getIsOnsale() {
-        return isOnsale;
+    public int getOnSaleOn() {
+        return onSaleOn;
     }
 
-    public void setIsOnsale(int isOnsale) {
-        this.isOnsale = isOnsale;
+    public void setOnSaleOn(int onSaleOn) {
+        this.onSaleOn = onSaleOn;
     }
 
-    public int getIsComment() {
-        return isComment;
+    public int getCommentIs() {
+        return commentIs;
     }
 
-    public void setIsComment(int isComment) {
-        this.isComment = isComment;
+    public void setCommentIs(int commentIs) {
+        this.commentIs = commentIs;
     }
 
     public int getShipFee() {
@@ -437,9 +437,9 @@ public class Goods {
                 ", promoteStartDate=" + promoteStartDate +
                 ", promoteEndDate=" + promoteEndDate +
                 ", couponSn='" + couponSn + '\'' +
-                ", isDel=" + isDel +
-                ", isOnsale=" + isOnsale +
-                ", isComment=" + isComment +
+                ", delIs=" + delIs +
+                ", onSaleOn=" + onSaleOn +
+                ", commentIs=" + commentIs +
                 ", shipFee=" + shipFee +
                 ", sortOrl=" + sortOrl +
                 ", createTime=" + createTime +

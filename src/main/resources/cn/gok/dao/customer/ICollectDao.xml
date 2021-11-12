@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--映射文件mapper-->
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.customer.ICollectDao">
+    <resultMap id="resultMapCollect" type="cn.gok.beans.customer.Collect">
+        <id column="COLLECT_ID" property="collectId"/>
+        <result column="CUSTOMER_ID" property="customerId"/>
+        <result column="GOODS_ID" property="goodsId"/>
+        <result column="BUSINESS_ID" property="businessId"/>
+        <result column="ADD_TIME" property="addTime"/>
+        <result column="IS_EXPIRES" property="expiresIs"/>
+        <result column="EXPIRES_DATE" property="expiresDate"/>
+        <result column="IS_CANCEL" property="cancelIs"/>
+        <result column="MODIFIED_TIME" property="modifiedTime"/>
+    </resultMap>
+
+</mapper>
+
