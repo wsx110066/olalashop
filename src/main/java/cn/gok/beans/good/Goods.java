@@ -1,7 +1,6 @@
 package cn.gok.beans.good;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * 商品类
