@@ -6,7 +6,7 @@
 <mapper namespace="cn.gok.dao.IGoodsBrand">
 
 
-    <resultMap id="resultMapGoodsBrand" type="cn.gok.beans.GoodsBrand">
+    <resultMap id="resultMapGoodsBrand" type="cn.gok.beans.good.GoodsBrand">
         <id column="BRAND_ID" property="brandId"/>
         <result column="BRAND_NAME" property="brandName"></result>
         <result column="CATEGORY_ID" property="categoryId"></result>

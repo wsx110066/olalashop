@@ -1,6 +1,6 @@
 package cn.gok.dao;
 
-import cn.gok.beans.GoodsBrand;
+import cn.gok.beans.good.GoodsBrand;
 
 import java.util.List;
 

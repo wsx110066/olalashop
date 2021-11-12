@@ -1,6 +1,6 @@
 package cn.gok.service.imp;
 
-import cn.gok.beans.GoodsBrand;
+import cn.gok.beans.good.GoodsBrand;
 import cn.gok.dao.IGoodsBrand;
 import cn.gok.service.GoodsBrandService;
 import org.springframework.beans.factory.annotation.Autowired;

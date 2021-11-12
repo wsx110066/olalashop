@@ -1,4 +1,4 @@
-package cn.gok.beans;
+package cn.gok.beans.good;
 
 import java.io.Serializable;
 import java.util.Date;
