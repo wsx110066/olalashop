@@ -1,6 +1,6 @@
 package cn.gok.service.imp;
 
-import cn.gok.beans.Category;
+import cn.gok.beans.good.Category;
 import cn.gok.dao.ICategory;
 import cn.gok.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;

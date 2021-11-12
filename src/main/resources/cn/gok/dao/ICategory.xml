@@ -6,7 +6,7 @@
 <mapper namespace="cn.gok.dao.ICategory">
 
 
-    <resultMap id="resultMapCategory" type="cn.gok.beans.Category">
+    <resultMap id="resultMapCategory" type="cn.gok.beans.good.Category">
         <id column="CATEGORY_ID" property="categoryId"/>
         <result column="CATEGORY_NAME" property="categoryName"></result>
         <result column="PARENT_ID" property="parentId"></result>
@@ -23,7 +23,7 @@
         <result column="UPDATE_TIME" property="updateTime"></result>
         <result column="UPDATE_BY" property="updateBy"></result>
 
-        <collection property="goodsBrandList" ofType="cn.gok.beans.GoodsBrand"
+        <collection property="goodsBrandList" ofType="cn.gok.beans.good.GoodsBrand"
                     select="cn.gok.dao.IGoodsBrand.queryGoodsBrandListById"
                     column="CATEGORY_ID">
         </collection>
