@@ -1,6 +1,6 @@
 package cn.gok.controller;
 
-import cn.gok.beans.Category;
+import cn.gok.beans.good.Category;
 import cn.gok.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,6 @@
 package cn.gok.service;
 
-import cn.gok.beans.Category;
+import cn.gok.beans.good.Category;
 
 import java.util.List;
 
