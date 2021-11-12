@@ -1,6 +1,8 @@
 package cn.gok.beans;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 //商品类别
 public class Category implements Serializable {
@@ -24,10 +26,22 @@ public class Category implements Serializable {
     private  String filterAttr;
     //商品是否有效 0无效 1有效
     private  Integer isEnabled;
+    //创建时间
+    private Date createTime;
+    //创建者
+    private  String createBy;
+    //更新时间
+    private  Date updateTime;
+    //更新者
+    private  String updateBy;
+    //
+    private List<GoodsBrand> goodsBrandList;
+
 
     public int getCategoryId() {
         return categoryId;
     }
+
 
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
@@ -103,5 +117,66 @@ public class Category implements Serializable {
 
     public void setIsEnabled(Integer isEnabled) {
         this.isEnabled = isEnabled;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
+    }
+
+    public List<GoodsBrand> getGoodsBrandList() {
+        return goodsBrandList;
+    }
+
+    public void setGoodsBrandList(List<GoodsBrand> goodsBrandList) {
+        this.goodsBrandList = goodsBrandList;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryId=" + categoryId +
+                ", categoryName='" + categoryName + '\'' +
+                ", parentId='" + parentId + '\'' +
+                ", keywords='" + keywords + '\'' +
+                ", catyDesc='" + catyDesc + '\'' +
+                ", sortOrl=" + sortOrl +
+                ", isShowInNav=" + isShowInNav +
+                ", grade=" + grade +
+                ", filterAttr='" + filterAttr + '\'' +
+                ", isEnabled=" + isEnabled +
+                ", createTime=" + createTime +
+                ", createBy='" + createBy + '\'' +
+                ", updateTime=" + updateTime +
+                ", updateBy='" + updateBy + '\'' +
+                ", goodsBrandList=" + goodsBrandList.toString() +
+                '}';
     }
 }
