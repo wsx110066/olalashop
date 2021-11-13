@@ -17,7 +17,7 @@
 <body>
 <!--头 -->
 <header>
-    <#include "person/header.html">
+    <#include "business/person/header.html">
 </header>
 <div class="nav-table"></div>
 <b class="line"></b>
@@ -63,12 +63,10 @@
                                         </div>
                                     </div>
                                     <div class="s-tp">
-                                        <span class="ui-btn-loading-before">找相似</span>/
+                                        <span class="ui-btn-loading-before">找相似</span>
                                         <i class="am-icon-shopping-cart"></i>
-                                        <span class="ui-btn-loading-before buy">加入购物车</span></br>
-                                        <p>
-                                            <a href="javascript:;" onclick="addCollect('${collectObj.collectId}',1)" class="c-nodo J_delFav_btn">取消收藏</a>
-                                        </p>
+                                        <span class="ui-btn-loading-before buy">加入购物车</span>
+                                        <span class="ui-btn-loading-before" onclick="addCollect('${collectObj.collectId}',1)">取消收藏</span>
                                     </div>
                                 </div>
                             </div>
