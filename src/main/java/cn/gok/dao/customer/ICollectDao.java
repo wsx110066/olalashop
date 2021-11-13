@@ -1,6 +1,7 @@
 package cn.gok.dao.customer;
 
 import cn.gok.beans.customer.Collect;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,4 +18,12 @@ public interface ICollectDao {
      * @return
      */
     List<Collect> queryCollectsByCustomerId(String customerId);
+
+    /**
+     * 通过收藏id修改某收藏是否取消的信息
+     * @param collectId
+     * @param isCancel
+     * @return
+     */
+    boolean updateCollectCancelByCollectId(@Param("collectId") int collectId, @Param("isCancel") boolean isCancel);
 }

@@ -63,11 +63,40 @@ public class PersonalCenterController {
     }
 
     /**
+     * 收藏中的增删改查
+     * @param collectId
+     * @param isCancel
+     * @param source
+     * @return
+     */
+    @RequestMapping("/saveCollect.do")
+    public ModelAndView saveCollect(int collectId, boolean isCancel, String source) {
+
+
+        switch(source){
+            case "1":{
+                iCollectService.updateCollectCancelByCollectId(collectId,isCancel);
+                break;
+            }
+            default:{
+
+            }
+        }
+        return toCollectionPage();
+    }
+
+    /**
      * 跳转到 我的足迹 页面
      * @return
      */
     @RequestMapping("/toFootPage.do")
-    public String toFootPage(){
-        return "business/person/foot";
+    public ModelAndView toFootPage(){
+        ModelAndView mv = new ModelAndView();
+//        String loginUserId = (String)request.getSession().getAttribute("1598777623923");
+        String customerId = "1598777623923";
+        List<CollectVo> collectVos = iCollectService.queryCollectsByCustomerId(customerId);
+        mv.addObject("collectVos",collectVos);
+        mv.setViewName("business/person/foot");
+        return mv;
     }
 }
