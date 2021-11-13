@@ -2,6 +2,7 @@ package cn.gok.service.customer;
 
 import cn.gok.beans.customer.Collect;
 import cn.gok.beans.customer.CollectVo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,4 +17,12 @@ public interface ICollectService {
      * @return
      */
     List<CollectVo> queryCollectsByCustomerId(String customerId);
+
+    /**
+     * 通过收藏id修改某收藏是否取消的信息
+     * @param collectId
+     * @param isCancel
+     * @return
+     */
+    boolean updateCollectCancelByCollectId(int collectId, boolean isCancel);
 }

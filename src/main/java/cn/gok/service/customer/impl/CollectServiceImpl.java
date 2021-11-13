@@ -49,13 +49,26 @@ public class CollectServiceImpl implements ICollectService {
             Goods good = iGoodsDao.queryGoodsByGoodsId(collect.getGoodsId());
             GoodsReport goodsReport = iGoodsReportDao.queryGoodsReportByGoodsId(collect.getGoodsId());
             List<Picture> pictures = iPictureDao.queryPictureListByRelationId(collect.getGoodsId());
-            System.out.println(good);
-            System.out.println(goodsReport);
-            System.out.println(pictures);
-            CollectVo collectVo = new CollectVo(collect.getCollectId(),good.getGoodsId(),good.getGoodsName(),good.getGoodsTitle(),"pictures.get(0).getLinkUrl()",good.getShopPrice(),good.getPromotePrice(),goodsReport.getMonthSales());
-            result.add(collectVo);
+
+            if(good != null && goodsReport != null && pictures != null){
+                CollectVo collectVo = new CollectVo(collect.getCollectId(),good.getGoodsId(),good.getGoodsName(),good.getGoodsTitle(),"pictures.get(0).getLinkUrl()",good.getShopPrice(),good.getPromotePrice(),goodsReport.getMonthSales());
+                result.add(collectVo);
+            }
+
         }
 
         return result;
+    }
+
+    /**
+     * 通过收藏id修改某收藏是否取消的信息
+     *
+     * @param collectId
+     * @param isCancel
+     * @return
+     */
+    @Override
+    public boolean updateCollectCancelByCollectId(int collectId, boolean isCancel) {
+        return iCollectDao.updateCollectCancelByCollectId(collectId, isCancel);
     }
 }

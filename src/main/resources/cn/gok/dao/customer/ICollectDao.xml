@@ -16,10 +16,15 @@
         <result column="IS_CANCEL" property="cancelIs"/>
         <result column="MODIFIED_TIME" property="modifiedTime"/>
     </resultMap>
+    <update id="updateCollectCancelByCollectId">
+        update c_collect set IS_CANCEL = #{isCancel} where COLLECT_ID = #{collectId}
+    </update>
+
     <select id="queryCollectsByCustomerId" resultMap="resultMapCollect">
         select *
         from c_collect
         where CUSTOMER_ID = #{customerId}
+          and IS_CANCEL = 0
     </select>
 
 

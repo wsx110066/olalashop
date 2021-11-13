@@ -63,9 +63,9 @@
                                         </div>
                                     </div>
                                     <div class="s-tp">
-                                        <span class="ui-btn-loading-before">找相似</span>
+                                        <span class="ui-btn-loading-before">找相似</span>/
                                         <i class="am-icon-shopping-cart"></i>
-                                        <span class="ui-btn-loading-before buy">加入购物车</span>
+                                        <span class="ui-btn-loading-before buy">加入购物车</span></br>
                                         <p>
                                             <a href="javascript:;" onclick="addCollect('${collectObj.collectId}',1)" class="c-nodo J_delFav_btn">取消收藏</a>
                                         </p>
@@ -97,7 +97,7 @@
 
     //取消收藏
     function addCollect(collectId, status){
-        location.href = "/olalashop/goodsIndexApi/saveCollect.do?collectId="+collectId+"&isCancel="+status+"&source=1";
+        location.href = "/olalashop/personalCenter/saveCollect.do?collectId="+collectId+"&isCancel="+status+"&source=1";
     }
 </script>
 </html>

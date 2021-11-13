@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.good.IGoodArticle">
+
+
+
+    <resultMap id="resultMapGoodArticle" type="cn.gok.beans.good.GoodArticle">
+        <id column="ARTICLE_ID" property="articleId"/>
+        <result column="ARTICLE_TITLE" property="articleTitle"></result>
+        <result column="PREF_TITLE" property="prefTitle"></result>
+        <result column="KEYWORDS" property="keywords"></result>
+        <result column="ABSTRACTS" property="abstracts"></result>
+        <result column="AUTHOR" property="author"></result>
+        <result column="ARTICLE_TYPE" property="articleType"></result>
+        <result column="ARTICLE_COLUMN" property="articleColumn"></result>
+        <result column="ARTICLE_SORT" property="articleSort"></result>
+        <result column="CONTENT" property="content"></result>
+
+        <result column="SOURCE" property="source"></result>
+        <result column="LINK_URL" property="linkUrl"></result>
+        <result column="ALLOW_COMMENTS" property="allowComments"></result>
+        <result column="COMMENT_BEGIN_TIME" property="commentBeginTime"></result>
+        <result column="COMMENT_END_TIME" property="commentEndTime"></result>
+
+        <result column="IS_ENABLED" property="isEnabled"></result>
+        <result column="CLICK_COUNT" property="clickCount"></result>
+        <result column="REVIEW_STATUS" property="reviewStatus"></result>
+
+
+        <result column="CREATE_TIME" property="createTime"></result>
+        <result column="CREATE_BY" property="createBy"></result>
+        <result column="UPDATE_TIME" property="updateTime"></result>
+        <result column="UPDATE_BY" property="updateBy"></result>
+
+
+
+    </resultMap>
+
+
+
+
+    
+    <select id="queryGoodArticleList" resultMap="resultMapGoodArticle" >
+        select * from g_article
+    </select>
+
+
+
+</mapper>
