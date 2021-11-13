@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--映射文件mapper-->
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.order.IOrderRefundDao">
+    <resultMap id="resultMapOrderRefund" type="cn.gok.beans.order.OrderRefund">
+        <id column="REFUND_ORDER_ID" property="refundOrderId"/>
+        <result column="CUSTOMER_ID" property="customerId"/>
+        <result column="ORDER_ID" property="orderId"/>
+        <result column="TRANSATION_NO" property="transactionNo"/>
+        <result column="DELIV_FEE" property="delivFee"/>
+        <result column="DELIV_DATE" property="delivDate"/>
+        <result column="REFUND_REASON" property="refundReason"/>
+        <result column="GOODS_ID" property="goodsId"/>
+        <result column="QUANTITY" property="quantity"/>
+        <result column="CUST_NAME" property="custName"/>
+        <result column="REFUND_DATE" property="refundDate"/>
+        <result column="REFUND_STATUS" property="refundStatus"/>
+        <result column="MODIFIED_TIME" property="modifiedTime"/>
+    </resultMap>
+
+</mapper>
+
