@@ -16,14 +16,14 @@
         <result column="BIRTHDAY" property="birthday"/>
         <result column="USER_MOBILE" property="userMobile"/>
         <result column="EMAIL" property="email"/>
-        <result column="USER_POINT" property="userPoint;"/>
-        <result column="REGISTER_TIME" property="registerTime;"/>
-        <result column="CUSTOMER_STATUS" property="customerStatus;"/>
-        <result column="IS_DEL" property="idDel;"/>
-        <result column="CUSTOMER_LEVEL" property="customerLevel;"/>
-        <result column="USER_BALACE" property="userBalance;"/>
-        <result column="REMARK" property="remark;"/>
-        <result column="MODIFIED_TIME" property="modifiedTime;"/>
+        <result column="USER_POINT" property="userPoint"/>
+        <result column="REGISTER_TIME" property="registerTime"/>
+        <result column="CUSTOMER_STATUS" property="customerStatus"/>
+        <result column="IS_DEL" property="idDel"/>
+        <result column="CUSTOMER_LEVEL" property="customerLevel"/>
+        <result column="USER_BALACE" property="userBalance"/>
+        <result column="REMARK" property="remark"/>
+        <result column="MODIFIED_TIME" property="modifiedTime"/>
 
     </resultMap>
 
