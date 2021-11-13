@@ -51,7 +51,7 @@ public class CollectServiceImpl implements ICollectService {
             List<Picture> pictures = iPictureDao.queryPictureListByRelationId(collect.getGoodsId());
 
             if(good != null && goodsReport != null && pictures != null){
-                CollectVo collectVo = new CollectVo(collect.getCollectId(),good.getGoodsId(),good.getGoodsName(),good.getGoodsTitle(),"pictures.get(0).getLinkUrl()",good.getShopPrice(),good.getPromotePrice(),goodsReport.getMonthSales());
+                CollectVo collectVo = new CollectVo(collect.getCollectId(),good.getGoodsId(),good.getGoodsName(),good.getGoodsTitle(),pictures.get(0).getRealImg(),good.getShopPrice(),good.getPromotePrice(),goodsReport.getMonthSales());
                 result.add(collectVo);
             }
 
