@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.good.IGoodActivit">
+
+
+
+
+    <resultMap id="resultMapGoodActivit" type="cn.gok.beans.good.GoodActivit">
+        <id column="ACTIVIT_ID" property="activitId"/>
+        <result column="SLOGAN" property="slogan"></result>
+        <result column="ACTIVIT_IMG" property="activitImg"></result>
+        <result column="ACTIVIT_CONTENT" property="activitContent"></result>
+        <result column="LINK_URL" property="linkUrl"></result>
+
+        <result column="SORT_ORDER" property="sortOrder"></result>
+        <result column="START_TIME" property="startTime"></result>
+        <result column="END_TIME" property="endTime"></result>
+        <result column="IS_FINISHED" property="isFinished"></result>
+
+        <result column="CREATE_TIME" property="createTime"></result>
+        <result column="CREATE_BY" property="createBy"></result>
+        <result column="UPDATE_TIME" property="updateTime"></result>
+        <result column="UPDATE_BY" property="updateBy"></result>
+
+
+
+    </resultMap>
+
+
+
+
+    
+    <select id="queryGoodActivitList" resultMap="resultMapGoodActivit" >
+        select * from g_activit
+    </select>
+
+
+
+</mapper>
