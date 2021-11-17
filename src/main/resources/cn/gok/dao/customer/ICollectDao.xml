@@ -16,8 +16,15 @@
         <result column="IS_CANCEL" property="cancelIs"/>
         <result column="MODIFIED_TIME" property="modifiedTime"/>
     </resultMap>
+    <insert id="addCollect">
+        insert into c_collect (CUSTOMER_ID, GOODS_ID, ADD_TIME, IS_EXPIRES, EXPIRES_DATE, IS_CANCEL, MODIFIED_TIME)
+        values (#{customerId}, #{goodsId}, #{addTime}, #{expiresIs}, #{expiresDate}, #{cancelIs}, #{modifiedTime})
+    </insert>
+
     <update id="updateCollectCancelByCollectId">
-        update c_collect set IS_CANCEL = #{isCancel} where COLLECT_ID = #{collectId}
+        update c_collect
+        set IS_CANCEL = #{isCancel}
+        where COLLECT_ID = #{collectId}
     </update>
 
     <select id="queryCollectsByCustomerId" resultMap="resultMapCollect">
@@ -25,6 +32,13 @@
         from c_collect
         where CUSTOMER_ID = #{customerId}
           and IS_CANCEL = 0
+    </select>
+
+    <select id="queryCollectsByCuAndGoodsId" resultMap="resultMapCollect">
+        select *
+        from c_collect
+        where CUSTOMER_ID = #{customerId}
+          and GOODS_ID = #{goodsId}
     </select>
 
 

@@ -56,6 +56,16 @@ public class Collect {
     public Collect() {
     }
 
+    public Collect(String customerId, String goodsId, Timestamp addTime, boolean expiresIs, Timestamp expiresDate, boolean cancelIs, Timestamp modifiedTime) {
+        this.customerId = customerId;
+        this.goodsId = goodsId;
+        this.addTime = addTime;
+        this.expiresIs = expiresIs;
+        this.expiresDate = expiresDate;
+        this.cancelIs = cancelIs;
+        this.modifiedTime = modifiedTime;
+    }
+
     public int getCollectId() {
         return collectId;
     }
@@ -112,7 +122,7 @@ public class Collect {
         this.expiresDate = expiresDate;
     }
 
-    public boolean isCancelIs() {
+    public boolean getCancelIs() {
         return cancelIs;
     }
 

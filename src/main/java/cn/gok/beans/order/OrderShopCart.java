@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 /**
  * 购物车类
+ *
  * @author 14489
  */
 public class OrderShopCart {
@@ -98,11 +99,35 @@ public class OrderShopCart {
      */
     private Timestamp modifiedTime;
 
+    /**
+     * 图片路径
+     */
+    private String imgPath;
+
     public OrderShopCart() {
     }
 
     public long getShopCartId() {
         return shopCartId;
+    }
+
+    public OrderShopCart(String customerId, String goodsId, String goodsSn, String goodsName, int cartType, String goodsAttr, int goodsAmount, int marketPrice, int shopPrice, int realBuyPrice, boolean openSaleIs, int giftIs, boolean canHandle, Timestamp addTime, Timestamp modifiedTime, String imgPath) {
+        this.customerId = customerId;
+        this.goodsId = goodsId;
+        this.goodsSn = goodsSn;
+        this.goodsName = goodsName;
+        this.cartType = cartType;
+        this.goodsAttr = goodsAttr;
+        this.goodsAmount = goodsAmount;
+        this.marketPrice = marketPrice;
+        this.shopPrice = shopPrice;
+        this.realBuyPrice = realBuyPrice;
+        this.openSaleIs = openSaleIs;
+        this.giftIs = giftIs;
+        this.canHandle = canHandle;
+        this.addTime = addTime;
+        this.modifiedTime = modifiedTime;
+        this.imgPath = imgPath;
     }
 
     public void setShopCartId(long shopCartId) {
@@ -245,6 +270,14 @@ public class OrderShopCart {
         this.modifiedTime = modifiedTime;
     }
 
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+
     @Override
     public String toString() {
         return "OrderShopCart{" +
@@ -266,6 +299,7 @@ public class OrderShopCart {
                 ", canHandle=" + canHandle +
                 ", addTime=" + addTime +
                 ", modifiedTime=" + modifiedTime +
+                ", imgPath='" + imgPath + '\'' +
                 '}';
     }
 }
