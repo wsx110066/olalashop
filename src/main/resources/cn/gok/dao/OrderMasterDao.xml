@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.OrderMasterDao">
+    <resultMap id="resultMapMaster" type="cn.gok.beans.order.OrderMaster">
+        <id column="ORDER_ID" property="orderId"></id>
+        <result column="ORDER_SN" property="orderSn"></result>
+        <result column="TRANSATION_NO" property="transationNo"></result>
+        <result column="CUSTOMER_ID" property="customerId"></result>
+        <result column="PAY_TYPE" property="payType"></result>
+        <result column="PAY_TIME" property="payTime"></result>
+        <result column="ORDER_MONEY" property="orderMoney"></result>
+        <result column="DISTRICT_MONEY" property="districtMoney"></result>
+        <result column="PAY_MONEY" property="payMoney"></result>
+        <result column="CREATE_TIME" property="createTime"></result>
+        <result column="RECEIVE_TIME" property="reciveTime"></result>
+        <result column="ORDER_STATUS" property="orderStatus"></result>
+        <result column="ORDER_POINT" property="orderPoint"></result>
+        <result column="INVOICE_TITLE" property="invoiceTitle"></result>
+        <result column="INVOICE_NO" property="invoiceNo"></result>
+        <result column="MODIFIED_TIME" property="modifyTime"></result>
+    </resultMap>
+
+    <select id="queryOrderMaster" resultMap="resultMapMaster">
+        select * from o_order_master where CUSTOMER_ID=#{customerId}
+    </select>
+
+</mapper>

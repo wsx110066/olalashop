@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.OrderDetailDao">
+    <resultMap id="resultMapDetail" type="cn.gok.beans.order.OrderDetail">
+        <id column="ORDER_DETAIL_ID" property="orderDetailId" ></id>
+        <result column="ORDER_ID" property="orderId"></result>
+        <result column="GOODS_ID" property="goodId"></result>
+        <result column="GOODS_NAME" property="goodName"></result>
+        <result column="GOODS_CNT" property="goodCnt"></result>
+        <result column="GOODS_PRICE" property="goodPrice"></result>
+        <result column="AVERAGE_COST" property="averageCost"></result>
+        <result column="WEIGHT" property="weight"></result>
+        <result column="DISTRICT_MONEY" property="distictMoney"></result>
+        <result column="WHID" property="whid"></result>
+        <result column="MODIFIED_TIME" property="modifyTime"></result>
+    </resultMap>
+
+    <select id="queryDetailByOrderId" resultMap="resultMapDetail">
+        select * from o_order_detail where ORDER_ID=#{orderId}
+    </select>
+
+</mapper>
