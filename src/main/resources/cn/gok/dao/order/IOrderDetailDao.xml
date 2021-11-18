@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--映射文件mapper-->
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.order.IOrderDetailDao">
+    <resultMap id="resultMapOrderDetail" type="cn.gok.beans.order.OrderDetail">
+        <id column="ORDER_DETAIL_ID" property="orderDetailId"/>
+        <result column="ORDER_ID" property="orderId"/>
+        <result column="GOODS_ID" property="goodsId"/>
+        <result column="GOODS_NAME" property="goodsName"/>
+        <result column="GOODS_CNT" property="goodsCnt"/>
+        <result column="GOODS_PRICE" property="goodsPrice"/>
+        <result column="AVERAGE_COST" property="averagePrice"/>
+        <result column="WEIGHT" property="weight"/>
+        <result column="DISTRICT_MONEY" property="districtMoney"/>
+        <result column="WHID" property="whid"/>
+        <result column="MODIFIED_TIME" property="modifiedTime"/>
+    </resultMap>
+
+</mapper>
+

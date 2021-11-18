@@ -98,7 +98,7 @@
 														</div>
 														<div class="brand-side">
 															<dl class="dl-sort"><dt><span>实力商家</span></dt>
-															<#list firstMenu.brandList as brand>
+															<#list firstMenu.goodsBrandList as brand>
 																<dd><a rel="nofollow" title="${brand.brandName} " target="_blank" href="/olalashop/goodsIndexApi/queryGoodsByParam.do?brandId=${brand.brandId}" rel="nofollow"><span  class="red" >${brand.brandName} </span></a></dd>
 															</#list>
 															</dl>
@@ -1679,7 +1679,7 @@
 <div class="navCir">
     <li class="active"><a href="home2.html"><i class="am-icon-home "></i>首页</a></li>
     <li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
-    <li><a href="/olalashop/orderCartApi/findAll.do"><i class="am-icon-shopping-basket"></i>购物车</a></li>
+    <li><a href="/olalashop/orderCartApi/queryAllShopCart.do"><i class="am-icon-shopping-basket"></i>购物车</a></li>
     <li><a href="/olalashop/business/person/index.html"><i class="am-icon-user"></i>我的</a></li>
 </div>
 <!--菜单 -->
@@ -1700,7 +1700,7 @@
                     </div>
                     <div class="login_btnbox ">
                         <a href="# " class="login_order ">我的订单</a>
-                        <a href="# " class="login_favorite ">我的收藏</a>
+                        <a href="/olalashop/personalCenter/toCollectionPage.do" class="login_favorite ">我的收藏</a>
                     </div>
                     <i class="icon_arrow_white "></i>
                 </div>
@@ -1726,7 +1726,7 @@
             </div>
 
             <div id="foot " class="item ">
-                <a href="# ">
+                <a href="/olalashop/personalCenter/toFootPage.do">
                     <span class="zuji "></span>
                 </a>
                 <div class="mp_tooltip ">
@@ -1736,7 +1736,7 @@
             </div>
 
             <div id="brand " class="item ">
-                <a href="#">
+                <a href="/olalashop/personalCenter/toCollectionPage.do">
                     <span class="wdsc "><img src="/olalashop/business/images/wdsc.png "/></span>
                 </a>
                 <div class="mp_tooltip ">

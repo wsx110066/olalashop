@@ -1,12 +1,6 @@
 package cn.gok.service;
 
-import cn.gok.beans.UserLogin;
-import org.apache.ibatis.annotations.Param;
-
 public interface UserService {
-    public UserLogin queryUserLoginService(String UserName,String Password);
-    public int insertUserByEmailRegister(String email,String Password);
-    public int insertUserByMoblieRegister(String mobile,String Password);
-    public UserLogin queryOneByName(String name);
-    public int queryOneIdByname(String name);
+    public int queryUserLoginService(String UserName,String Password);
+    public int insertUserRegisterService(String email,String Password);
 }

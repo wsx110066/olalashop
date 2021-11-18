@@ -1,28 +1,101 @@
 package cn.gok.beans.order;
 
-public class OrderMaster {
-    private int orderId;
-    private String orderSn;
-    private String transationNo;
-    private String customerId;
-    private int payType;
-    private String payTime;
-    private int orderMoney;
-    private int districtMoney;
-    private int payMoney;
-    private String createTime;
-    private String reciveTime;
-    private int orderStatus;
-    private int orderPoint;
-    private String invoiceTitle;
-    private String invoiceNo;
-    private String modifyTime;
+import java.sql.Timestamp;
 
-    public int getOrderId() {
+/**
+ * 订单主类
+ * @author 14489
+ */
+public class OrderMaster {
+
+    /**
+     * 订单ID
+     */
+    private long orderId;
+
+    /**
+     * 订单编号
+     */
+    private String orderSn;
+
+    /**
+     * 交易流水号
+     */
+    private String transactionNo;
+
+    /**
+     * 客户ID
+     */
+    private String customerId;
+
+    /**
+     * 支付方式：1现金，2余额，3网银，4支付宝，5微信
+     */
+    private int payType;
+
+    /**
+     * 支付时间
+     */
+    private Timestamp payTime;
+
+    /**
+     * 订单金额（分）
+     */
+    private int orderMoney;
+
+    /**
+     * 优惠金额（分）
+     */
+    private int districtMoney;
+
+    /**
+     * 支付金额（分）
+     */
+    private int payMoney;
+
+    /**
+     * 下单时间
+     */
+    private Timestamp createTime;
+
+    /**
+     * 收货时间
+     */
+    private Timestamp receiveTime;
+
+    /**
+     * 订单状态 0未支付 1已支付 2已完成 3待退款 4已退款 5已关闭
+     */
+    private int orderStatus;
+
+    /**
+     * 订单积分
+     */
+    private int orderPoint;
+
+    /**
+     * 发票抬头
+     */
+    private String invoiceTitle;
+
+    /**
+     * 发票单号
+     */
+    private String invoiceNo;
+
+    /**
+     * 最后修改时间
+     */
+    private Timestamp modifiedTime;
+
+    public OrderMaster() {
+    }
+
+    public long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(long orderId) {
         this.orderId = orderId;
     }
 
@@ -34,12 +107,12 @@ public class OrderMaster {
         this.orderSn = orderSn;
     }
 
-    public String getTransationNo() {
-        return transationNo;
+    public String getTransactionNo() {
+        return transactionNo;
     }
 
-    public void setTransationNo(String transationNo) {
-        this.transationNo = transationNo;
+    public void setTransactionNo(String transactionNo) {
+        this.transactionNo = transactionNo;
     }
 
     public String getCustomerId() {
@@ -58,11 +131,11 @@ public class OrderMaster {
         this.payType = payType;
     }
 
-    public String getPayTime() {
+    public Timestamp getPayTime() {
         return payTime;
     }
 
-    public void setPayTime(String payTime) {
+    public void setPayTime(Timestamp payTime) {
         this.payTime = payTime;
     }
 
@@ -90,20 +163,20 @@ public class OrderMaster {
         this.payMoney = payMoney;
     }
 
-    public String getCreateTime() {
+    public Timestamp getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
     }
 
-    public String getReciveTime() {
-        return reciveTime;
+    public Timestamp getReceiveTime() {
+        return receiveTime;
     }
 
-    public void setReciveTime(String reciveTime) {
-        this.reciveTime = reciveTime;
+    public void setReceiveTime(Timestamp receiveTime) {
+        this.receiveTime = receiveTime;
     }
 
     public int getOrderStatus() {
@@ -138,11 +211,33 @@ public class OrderMaster {
         this.invoiceNo = invoiceNo;
     }
 
-    public String getModifyTime() {
-        return modifyTime;
+    public Timestamp getModifiedTime() {
+        return modifiedTime;
     }
 
-    public void setModifyTime(String modifyTime) {
-        this.modifyTime = modifyTime;
+    public void setModifiedTime(Timestamp modifiedTime) {
+        this.modifiedTime = modifiedTime;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderMaster{" +
+                "orderId=" + orderId +
+                ", orderSn='" + orderSn + '\'' +
+                ", transactionNo='" + transactionNo + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", payType=" + payType +
+                ", payTime=" + payTime +
+                ", orderMoney=" + orderMoney +
+                ", districtMoney=" + districtMoney +
+                ", payMoney=" + payMoney +
+                ", createTime=" + createTime +
+                ", receiveTime=" + receiveTime +
+                ", orderStatus=" + orderStatus +
+                ", orderPoint=" + orderPoint +
+                ", invoiceTitle='" + invoiceTitle + '\'' +
+                ", invoiceNo='" + invoiceNo + '\'' +
+                ", modifiedTime=" + modifiedTime +
+                '}';
     }
 }

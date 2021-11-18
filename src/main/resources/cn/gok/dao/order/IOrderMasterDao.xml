@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--映射文件mapper-->
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.order.IOrderMasterDao">
+    <resultMap id="resultMapOrderMaster" type="cn.gok.beans.order.OrderMaster">
+        <id column="ORDER_ID" property="orderId"/>
+        <result column="ORDER_SN" property="orderSn"/>
+        <result column="TRANSATION_NO" property="transactionNo"/>
+        <result column="CUSTOMER_ID" property="customerId"/>
+        <result column="PAY_TYPE" property="payType"/>
+        <result column="PAY_TIME" property="payTime"/>
+        <result column="ORDER_MONEY" property="orderMoney"/>
+        <result column="DISTRICT_MONEY" property="districtMoney"/>
+        <result column="PAY_MONEY" property="payMoney"/>
+        <result column="CREATE_TIME" property="createTime"/>
+        <result column="RECEIVE_TIME" property="receiveTime"/>
+        <result column="ORDER_STATUS" property="orderStatus"/>
+        <result column="ORDER_POINT" property="orderPoint"/>
+        <result column="INVOICE_TITLE" property="invoiceTitle"/>
+        <result column="INVOICE_NO" property="invoiceNo"/>
+        <result column="MODIFIED_TIME" property="modifiedTime"/>
+    </resultMap>
+
+</mapper>
+

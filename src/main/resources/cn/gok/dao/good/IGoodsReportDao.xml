@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--映射文件mapper-->
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.good.IGoodsReportDao">
+    <resultMap id="resultMapGoodsReport" type="cn.gok.beans.good.GoodsReport">
+        <id column="GOODS_ID" property="goodsId"/>
+        <result column="MONTH_SALES" property="monthSales"/>
+        <result column="COUNT_SALES" property="countSales"/>
+        <result column="COUNT_COMMS" property="countComms"/>
+        <result column="COMMEND_SCORE" property="commendScore"/>
+    </resultMap>
+
+    <select id="queryGoodsReportByGoodsId" resultMap="resultMapGoodsReport">
+        select *
+        from g_goods_report
+        where GOODS_ID = #{goodsId}
+    </select>
+</mapper>
+

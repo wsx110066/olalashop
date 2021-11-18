@@ -17,7 +17,7 @@
 <body>
 <!--头 -->
 <header>
-    <#include "person/header.html">
+    <#include "business/person/header.html">
 </header>
 <div class="nav-table"></div>
 <b class="line"></b>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="s-content">
                         <#list collectVos as collectObj>
-                            <div class="s-item-wrap">
+                            <div class="s-item-wrap" id="collectId_${collectObj.collectId}">
                                 <div class="s-item">
                                     <div class="s-pic">
                                         <a href="/olalashop/goodsIndexApi/queryGoodsDetail.do?goodsId=${collectObj.goodsId}" class="s-pic-link">
@@ -65,10 +65,8 @@
                                     <div class="s-tp">
                                         <span class="ui-btn-loading-before">找相似</span>
                                         <i class="am-icon-shopping-cart"></i>
-                                        <span class="ui-btn-loading-before buy">加入购物车</span>
-                                        <p>
-                                            <a href="javascript:;" onclick="addCollect('${collectObj.collectId}',1)" class="c-nodo J_delFav_btn">取消收藏</a>
-                                        </p>
+                                        <span class="ui-btn-loading-before buy" onclick="addShopCart('${collectObj.goodsId}')">加入购物车</span>
+                                        <span class="ui-btn-loading-before" onclick="changeCollectStatus('${collectObj.collectId}',1)">取消收藏</span>
                                     </div>
                                 </div>
                             </div>
@@ -96,8 +94,42 @@
     })
 
     //取消收藏
-    function addCollect(collectId, status){
-        location.href = "/olalashop/goodsIndexApi/saveCollect.do?collectId="+collectId+"&isCancel="+status+"&source=1";
+    function changeCollectStatus(collectId, status){
+        $.ajax({
+            type: "POST",
+            url: "/olalashop/personalCenter/saveCollect.do",
+            dataType: "json",
+            async: "true",
+            data:{
+                "collectId": collectId,
+                "isCancel": status,
+                "source": "1"
+            },
+            success:function (data) {
+                $("#collectId_" + collectId).remove();
+            },
+            error:function (data) {
+
+            }
+        })
+    }
+
+    function addShopCart(goodsId){
+        $.ajax({
+            type: "POST",
+            url: "/olalashop/orderCartApi/saveShopCart.do",
+            dataType: "json",
+            async: "true",
+            data:{
+                "goodsId": goodsId,
+            },
+            success:function (data) {
+                alert("已添加到购物车！")
+            },
+            error:function (data) {
+
+            }
+        })
     }
 </script>
 </html>
