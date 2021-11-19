@@ -27,10 +27,17 @@
     </resultMap>
     <insert id="addShopCart">
         insert into o_shop_cart (CUSTOMER_ID, GOODS_ID, GOODS_SN, GOODS_NAME, CART_TYPE, GOODS_ATTR, GOODS_AMOUNT,
-                                 MARKET_PRICE, SHOP_PRICE, REAL_BUY_PRICE, IS_OPEN_SALE, IS_GIFT, CAN_HANDLE, ADD_TIME, MODIFIED_TIME)
-        values (#{customerId}, #{goodsId}, #{goodsSn}, #{goodsName}, #{cartType}, #{goodsAttr}, #{goodsAmount}, #{marketPrice}, #{shopPrice}, #{realBuyPrice},
+                                 MARKET_PRICE, SHOP_PRICE, REAL_BUY_PRICE, IS_OPEN_SALE, IS_GIFT, CAN_HANDLE, ADD_TIME,
+                                 MODIFIED_TIME)
+        values (#{customerId}, #{goodsId}, #{goodsSn}, #{goodsName}, #{cartType}, #{goodsAttr}, #{goodsAmount},
+                #{marketPrice}, #{shopPrice}, #{realBuyPrice},
                 #{openSaleIs}, #{giftIs}, #{canHandle}, #{addTime}, #{modifiedTime})
     </insert>
+    <update id="updateAmountByShopCartID">
+        update o_shop_cart
+        set GOODS_AMOUNT = #{goodsAmount}
+        where SHOP_CART_ID = #{shopCartId}
+    </update>
 
     <delete id="deleteShopCartById">
         delete
@@ -42,6 +49,12 @@
         select *
         from o_shop_cart
         where CUSTOMER_ID = #{customerId}
+    </select>
+
+    <select id="queryShopCartById" resultMap="resultMapOrderShopCart">
+        select *
+        from o_shop_cart
+        where SHOP_CART_ID = #{shopCartId}
     </select>
 
 </mapper>

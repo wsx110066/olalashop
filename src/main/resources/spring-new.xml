@@ -64,14 +64,14 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd ">
 </bean>
 
     <!--配置事务管理器-->
-    <bean id="transactionManager"
+   <!-- <bean id="transactionManager"
     class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="dataSource"></property>
     </bean>
 
 
 
-    <!--配置事务的通知-->
+    &lt;!&ndash;配置事务的通知&ndash;&gt;
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
     <tx:attributes>
         <tx:method name="*" propagation="REQUIRED" read-only="false"/>
@@ -79,16 +79,13 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd ">
     </tx:attributes>
 </tx:advice>
 
-    <!--配置aop-->
+    &lt;!&ndash;配置aop&ndash;&gt;
     <aop:config>
-        <!--配置切入点表达式-->
+        &lt;!&ndash;配置切入点表达式&ndash;&gt;
         <aop:pointcut expression="execution(*
         cn.gok.service.imp.*.*(..))"
         id="pointcutService"/>
-        <!--建立通知和切入点表达式的关系-->
+        &lt;!&ndash;建立通知和切入点表达式的关系&ndash;&gt;
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcutService"/>
-    </aop:config>
-
-
-
+    </aop:config>-->
 </beans>

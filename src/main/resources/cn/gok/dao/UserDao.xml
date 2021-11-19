@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.UserDao">
+    
+    <resultMap id="resultMapUser" type="cn.gok.beans.UserLogin">
+        <id column="CUSTOMER_ID" property="UserID"></id>
+        <result column="LOGIN_NAME" property="UserName"></result>
+        <result column="PASSWORD" property="PassWord"></result>
+        <result column="USER_STATUS" property="UserStatus"></result>
+        <result column="MODIFIED_TIME" property="ModifiedTime"></result>
+    </resultMap>
+    
+    <select id="queryUserLoginService" resultMap="resultMapUser" >
+        select * from c_login where LOGIN_NAME =#{name} and PASSWORD = #{password}
+    </select>
+
+    <insert id="insertUserByEmailRegister">
+        insert into c_login(LOGIN_NAME,PASSWORD) values(#{email},#{password})
+    </insert>
+
+    <insert id="insertUserByMoblieRegister">
+        insert into c_login(LOGIN_NAME,PASSWORD) values(#{mobile},#{password})
+    </insert>
+
+    <select id="queryOneByName" resultMap="resultMapUser">
+        select * from c_login where LOGIN_NAME = #{name}
+    </select>
+
+    <select id="queryOneIdByname" resultMap="resultMapUser">
+        SELECT CUSTOMER_ID from c_login where LOGIN_NAME=#{name}
+    </select>
+
+</mapper>
