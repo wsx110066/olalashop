@@ -1,6 +1,7 @@
 package cn.gok.dao.order;
 
 import cn.gok.beans.order.OrderShopCart;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -30,4 +31,19 @@ public interface IOrderShopCartDao {
      * @return
      */
     Boolean addShopCart(OrderShopCart orderShopCart);
+
+    /**
+     * 更新购物车商品数量
+     * @param shopCartId 购物车id
+     * @param goodsAmount 商品数量
+     * @return
+     */
+    Boolean updateAmountByShopCartID(@Param("shopCartId") Long shopCartId, @Param("goodsAmount") int goodsAmount);
+
+    /**
+     * 通过购物车id查询一个购物车信息
+     * @param shopCartId 购物车id
+     * @return
+     */
+    OrderShopCart queryShopCartById(Long shopCartId);
 }

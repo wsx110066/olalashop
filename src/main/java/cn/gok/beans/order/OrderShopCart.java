@@ -104,6 +104,11 @@ public class OrderShopCart {
      */
     private String imgPath;
 
+    /**
+     * 订单总价格
+     */
+    private int orderMoney;
+
     public OrderShopCart() {
     }
 
@@ -278,6 +283,14 @@ public class OrderShopCart {
         this.imgPath = imgPath;
     }
 
+    public int getOrderMoney() {
+        return orderMoney;
+    }
+
+    public void setOrderMoney(int orderMoney) {
+        this.orderMoney = orderMoney;
+    }
+
     @Override
     public String toString() {
         return "OrderShopCart{" +
@@ -300,6 +313,7 @@ public class OrderShopCart {
                 ", addTime=" + addTime +
                 ", modifiedTime=" + modifiedTime +
                 ", imgPath='" + imgPath + '\'' +
+                ", orderMoney=" + orderMoney +
                 '}';
     }
 }
