@@ -16,20 +16,20 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd ">
     如果不是静态资源的请求，才由DispatcherServlet继续处理。-->
     <mvc:default-servlet-handler></mvc:default-servlet-handler>
     <!--配置视图解析器 InternalResourceViewResolver-->
-<!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-<!--    <property name="prefix" value="/"></property>-->
-<!--    <property name="suffix" value=".html"></property>-->
-<!--</bean>-->
+    <!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+    <!--    <property name="prefix" value="/"></property>-->
+    <!--    <property name="suffix" value=".html"></property>-->
+    <!--</bean>-->
 
 
 
     <!--拦截器配置-->
-<mvc:interceptors>
-    <mvc:interceptor>
-        <mvc:mapping path="/**"/> <!--/*代表只拦截一层，/**代表拦截任意层-->
-        <bean id="Interceptor" class="cn.gok.interceptor.Interceptor"></bean>
-    </mvc:interceptor>
-</mvc:interceptors>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/> <!--/*代表只拦截一层，/**代表拦截任意层-->
+            <bean id="Interceptor" class="cn.gok.interceptor.Interceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 
 

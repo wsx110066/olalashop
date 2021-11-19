@@ -1,4 +1,4 @@
-package cn.gok.dao;
+package cn.gok.dao.good;
 
 import cn.gok.beans.good.GoodsBrand;
 

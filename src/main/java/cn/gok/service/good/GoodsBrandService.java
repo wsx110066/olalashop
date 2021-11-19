@@ -1,4 +1,4 @@
-package cn.gok.service;
+package cn.gok.service.good;
 
 import cn.gok.beans.good.GoodsBrand;
 

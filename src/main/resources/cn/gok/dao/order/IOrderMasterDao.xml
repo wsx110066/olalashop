@@ -24,5 +24,9 @@
         <result column="MODIFIED_TIME" property="modifiedTime"/>
     </resultMap>
 
+    <select id="queryOrderMaster" resultMap="resultMapOrderMaster">
+        select * from o_order_master where CUSTOMER_ID=#{customerId}
+    </select>
+
 </mapper>
 

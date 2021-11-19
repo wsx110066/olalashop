@@ -7,6 +7,8 @@ import cn.gok.service.good.IGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author 14489
  */
@@ -25,5 +27,12 @@ public class GoodsServiceImpl implements IGoodsService {
     @Override
     public Goods queryGoodsByGoodsId(String goodsId) {
         return iGoodsDao.queryGoodsByGoodsId(goodsId);
+    }
+
+
+
+    @Override
+    public List<Goods> queryGoodListByName(String name) {
+        return iGoodsDao.queryGoodListByname(name);
     }
 }

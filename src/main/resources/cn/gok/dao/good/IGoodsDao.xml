@@ -43,5 +43,14 @@
         where GOODS_ID = #{goodsId}
     </select>
 
+    <select id="queryGoodListByname" resultMap="resultMapGoods">
+        select * from g_goods
+        <where>
+            <if test="name!=null and name!=''">
+                and GOODS_NAME like concat('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+
 </mapper>
 

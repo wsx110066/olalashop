@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.user.IConsigneeDao">
+    <resultMap id="resultMapConsignee" type="cn.gok.beans.user.Consignee">
+        <id column="CUSTOMER_ADDR_ID" property="customerAddrId"></id>
+        <result column="CUSTOMER_ID" property="customerId"></result>
+        <result column="CUSTOMER_USERNAME" property="customerUsername"></result>
+        <result column="ZIP" property="zip"></result>
+        <result column="PROVINCE" property="province"></result>
+        <result column="CITY" property="city"></result>
+        <result column="DISTRICT" property="district"></result>
+        <result column="CUSTOMER_USERPHONE" property="customerUserphone"></result>
+        <result column="ADDRESS" property="address"></result>
+        <result column="IS_DEFAULT" property="isDefault"></result>
+        <result column="BACK_UP" property="backup"></result>
+        <result column="MODIFIED_TIME" property="modifiedtime"></result>
+    </resultMap>
+
+    <select id="queryUserConsignee" resultMap="resultMapConsignee">
+        select * from c_consignee where CUSTOMER_ID=#{id}
+    </select>
+
+    <insert id="insertConsignee">
+        insert into c_consignee(CUSTOMER_ID,CUSTOMER_USERNAME,CUSTOMER_USERPHONE,PROVINCE,CITY,DISTRICT,ADDRESS) values(#{id},#{name},#{phone},#{province},#{city},#{district},#{address})
+    </insert>
+
+    <delete id="deleteConsignee">
+        delete from c_consignee where CUSTOMER_ADDR_ID=#{id}
+    </delete>
+
+</mapper>
