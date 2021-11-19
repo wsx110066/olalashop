@@ -1,69 +1,24 @@
 package cn.gok.beans.order;
 
-import java.sql.Timestamp;
-
-/**
- * 订单详情类
- * @author 14489
- */
 public class OrderDetail {
-
-    /**
-     * 订单详情表ID
-     */
     private int orderDetailId;
-
-    /**
-     * 订单表ID
-     */
     private int orderId;
-
-    /**
-     * 订单商品ID
-     */
-    private String goodsId;
-
-    /**
-     * 商品名称
-     */
-    private String goodsName;
-
-    /**
-     * 购买商品数量
-     */
-    private int goodsCnt;
-
-    /**
-     * 购买商品单价（分）
-     */
-    private int goodsPrice;
-
-    /**
-     * 平均成本价格（分）
-     */
-    private int averagePrice;
-
-    /**
-     * 商品重量
-     */
-    private float weight;
-
-    /**
-     * 优惠分摊金额（分）
-     */
-    private int districtMoney;
-
-    /**
-     * 仓库ID
-     */
+    private String goodId;
+    private String goodName;
+    private int goodCnt;
+    private int goodPrice;
+    private int averageCost;
+    private double weight;
+    private int distictMoney;
     private int whid;
+    private String modifyTime;
 
-    /**
-     * 最后修改时间
-     */
-    private Timestamp modifiedTime;
+    public String getGoodName() {
+        return goodName;
+    }
 
-    public OrderDetail() {
+    public void setGoodName(String goodName) {
+        this.goodName = goodName;
     }
 
     public int getOrderDetailId() {
@@ -82,60 +37,52 @@ public class OrderDetail {
         this.orderId = orderId;
     }
 
-    public String getGoodsId() {
-        return goodsId;
+    public String getGoodId() {
+        return goodId;
     }
 
-    public void setGoodsId(String goodsId) {
-        this.goodsId = goodsId;
+    public void setGoodId(String goodId) {
+        this.goodId = goodId;
     }
 
-    public String getGoodsName() {
-        return goodsName;
+    public int getGoodCnt() {
+        return goodCnt;
     }
 
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName;
+    public void setGoodCnt(int goodCnt) {
+        this.goodCnt = goodCnt;
     }
 
-    public int getGoodsCnt() {
-        return goodsCnt;
+    public int getGoodPrice() {
+        return goodPrice;
     }
 
-    public void setGoodsCnt(int goodsCnt) {
-        this.goodsCnt = goodsCnt;
+    public void setGoodPrice(int goodPrice) {
+        this.goodPrice = goodPrice;
     }
 
-    public int getGoodsPrice() {
-        return goodsPrice;
+    public int getAverageCost() {
+        return averageCost;
     }
 
-    public void setGoodsPrice(int goodsPrice) {
-        this.goodsPrice = goodsPrice;
+    public void setAverageCost(int averageCost) {
+        this.averageCost = averageCost;
     }
 
-    public int getAveragePrice() {
-        return averagePrice;
-    }
-
-    public void setAveragePrice(int averagePrice) {
-        this.averagePrice = averagePrice;
-    }
-
-    public float getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public int getDistrictMoney() {
-        return districtMoney;
+    public int getDistictMoney() {
+        return distictMoney;
     }
 
-    public void setDistrictMoney(int districtMoney) {
-        this.districtMoney = districtMoney;
+    public void setDistictMoney(int distictMoney) {
+        this.distictMoney = distictMoney;
     }
 
     public int getWhid() {
@@ -146,28 +93,11 @@ public class OrderDetail {
         this.whid = whid;
     }
 
-    public Timestamp getModifiedTime() {
-        return modifiedTime;
+    public String getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModifiedTime(Timestamp modifiedTime) {
-        this.modifiedTime = modifiedTime;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDetail{" +
-                "orderDetailId=" + orderDetailId +
-                ", orderId=" + orderId +
-                ", goodsId='" + goodsId + '\'' +
-                ", goodsName='" + goodsName + '\'' +
-                ", goodsCnt=" + goodsCnt +
-                ", goodsPrice=" + goodsPrice +
-                ", averagePrice=" + averagePrice +
-                ", weight=" + weight +
-                ", districtMoney=" + districtMoney +
-                ", whid=" + whid +
-                ", modifiedTime=" + modifiedTime +
-                '}';
+    public void setModifyTime(String modifyTime) {
+        this.modifyTime = modifyTime;
     }
 }

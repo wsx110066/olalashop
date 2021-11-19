@@ -1,13 +1,24 @@
 package cn.gok.beans;
 
 import javax.xml.crypto.Data;
+import java.io.Serializable;
 
-public class UserLogin {
+public class UserLogin implements Serializable {
     private String UserName;
     private String PassWord;
-    private String UserID;
+
+    private int UserID;
+
     private String UserStatus;
-    private Data ModifiedTime;
+    private String ModifiedTime;
+
+    public int getUserID() {
+        return UserID;
+    }
+
+    public void setUserID(int userID) {
+        UserID = userID;
+    }
 
     public String getUserName() {
         return UserName;
@@ -25,13 +36,7 @@ public class UserLogin {
         PassWord = passWord;
     }
 
-    public String getUserID() {
-        return UserID;
-    }
 
-    public void setUserID(String userID) {
-        UserID = userID;
-    }
 
     public String getUserStatus() {
         return UserStatus;
@@ -41,11 +46,11 @@ public class UserLogin {
         UserStatus = userStatus;
     }
 
-    public Data getModifiedTime() {
+    public String getModifiedTime() {
         return ModifiedTime;
     }
 
-    public void setModifiedTime(Data modifiedTime) {
+    public void setModifiedTime(String modifiedTime) {
         ModifiedTime = modifiedTime;
     }
 
