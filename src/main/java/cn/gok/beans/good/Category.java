@@ -1,49 +1,69 @@
 package cn.gok.beans.good;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
-//商品类别
-public class Category implements Serializable {
-    //商品分类ID
-    private  int categoryId;
-    //商品分类名称
-    private  String categoryName;
-    //分类父级ID
-    private  String parentId;
-    //分类编码
-    private  String keywords;
-    //商品分类描述
-    private  String catyDesc;
-    //商品分类排序
-    private  Integer sortOrl;
-    //是否显示在导航栏:0不;1显示
-    private  Integer isShowInNav;
-    //价格区间
-    private  Integer grade;
-    //商品属性
-    private  String filterAttr;
-    //商品是否有效 0无效 1有效
-    private  Integer isEnabled;
-    //创建时间
-    private Date createTime;
-    //创建者
-    private  String createBy;
-    //更新时间
-    private  Date updateTime;
-    //更新者
-    private  String updateBy;
-    //
-    private List<GoodsBrand> goodsBrandList;
+public class CateGory implements Serializable {
+    private String categoryId;
+    private String categoryName;
+    private String parentId;
+    private String keywords;
+    private String catyDesc;
+    private int sortOrl;
+    private int isShowInNav;
+    private int grade;
+    private int filterAttr;
+    private int isEnabled;
+    private int isShow;
+    private String createTime;
+    private String createBy;
+    private String updateTime;
+    private String updateBy;
 
+    public String getCreateTime() {
+        return createTime;
+    }
 
-    public int getCategoryId() {
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
+    }
+
+    public int getIsShow() {
+        return isShow;
+    }
+
+    public void setIsShow(int isShow) {
+        this.isShow = isShow;
+    }
+
+    public String getCategoryId() {
         return categoryId;
     }
 
-
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -79,104 +99,43 @@ public class Category implements Serializable {
         this.catyDesc = catyDesc;
     }
 
-    public Integer getSortOrl() {
+    public int getSortOrl() {
         return sortOrl;
     }
 
-    public void setSortOrl(Integer sortOrl) {
+    public void setSortOrl(int sortOrl) {
         this.sortOrl = sortOrl;
     }
 
-    public Integer getIsShowInNav() {
+    public int getIsShowInNav() {
         return isShowInNav;
     }
 
-    public void setIsShowInNav(Integer isShowInNav) {
+    public void setIsShowInNav(int isShowInNav) {
         this.isShowInNav = isShowInNav;
     }
 
-    public Integer getGrade() {
+    public int getGrade() {
         return grade;
     }
 
-    public void setGrade(Integer grade) {
+    public void setGrade(int grade) {
         this.grade = grade;
     }
 
-    public String getFilterAttr() {
+    public int getFilterAttr() {
         return filterAttr;
     }
 
-    public void setFilterAttr(String filterAttr) {
+    public void setFilterAttr(int filterAttr) {
         this.filterAttr = filterAttr;
     }
 
-    public Integer getIsEnabled() {
+    public int getIsEnabled() {
         return isEnabled;
     }
 
-    public void setIsEnabled(Integer isEnabled) {
+    public void setIsEnabled(int isEnabled) {
         this.isEnabled = isEnabled;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    public List<GoodsBrand> getGoodsBrandList() {
-        return goodsBrandList;
-    }
-
-    public void setGoodsBrandList(List<GoodsBrand> goodsBrandList) {
-        this.goodsBrandList = goodsBrandList;
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "categoryId=" + categoryId +
-                ", categoryName='" + categoryName + '\'' +
-                ", parentId='" + parentId + '\'' +
-                ", keywords='" + keywords + '\'' +
-                ", catyDesc='" + catyDesc + '\'' +
-                ", sortOrl=" + sortOrl +
-                ", isShowInNav=" + isShowInNav +
-                ", grade=" + grade +
-                ", filterAttr='" + filterAttr + '\'' +
-                ", isEnabled=" + isEnabled +
-                ", createTime=" + createTime +
-                ", createBy='" + createBy + '\'' +
-                ", updateTime=" + updateTime +
-                ", updateBy='" + updateBy + '\'' +
-                ", goodsBrandList=" + goodsBrandList.toString() +
-                '}';
     }
 }
