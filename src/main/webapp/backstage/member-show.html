@@ -89,14 +89,14 @@
 		service.customerId = customerId;
 		$.ajax({
 			type: 'post',
-			url: '../memberApi/queryMembersById.do',
+			url: '../MemberApi/queryMembersById.do',
 			async:true,
 			data:{
 				params:JSON.stringify(service)
 			},
 			success:function(data){
-				if(data.respData.respCode == 10000){
-					var customerInfo = data.respData.result;
+				if(data.respCode == 10000){
+					var customerInfo = data.result;
 					$("#customerName").text(customerInfo.customerName);
 					$("#userMobile").text(customerInfo.userMobile);
 					$("#email").text(customerInfo.email);

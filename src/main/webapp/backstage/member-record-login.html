@@ -100,7 +100,7 @@
             bPaginate: true, //翻页功能
             sPaginationType: "full_numbers", //分页显示样式
             serverSide: true, //启用服务器分页
-            sAjaxSource: "../memberApi/queryLoginLog.do", //服务端请求数据接口
+            sAjaxSource: "../MemberApi/queryLoginLog.do", //服务端请求数据接口
             searching: false, //关闭 datatables 的搜索框
             destroy: true, //解决重新渲染问题
             iDisplayLength: 10, //每页显示数量
@@ -121,7 +121,7 @@
                     data: aoData,//这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数
                     async: false,
                     success: function (result) {
-                        fnCallback(result.respData);//把返回的数据传给这个方法就可以了,datatable会自动绑定数据的
+                        fnCallback(result);//把返回的数据传给这个方法就可以了,datatable会自动绑定数据的
                     },
                     error: function (msg) {
 
@@ -148,7 +148,7 @@
             columns: [
                 {"defaultContent": "", "className": "td-check-id", "orderable": false, "visible": true},
                 {"data": "customerId", "className": "td-user-id", "orderable": false, "visible": true},
-                {"data": "customerInfo", "className": "td-name", "width": 10,"orderable": false,"visible": true },
+                {"data": "customerInfId", "className": "td-name", "width": 10,"orderable": false,"visible": true },
                 {"data": "realName", "className": "td-real-name", "orderable": false, "visible": true},
                 {"data": "gender", "className": "td-sex", "width": 2,"orderable": false,"visible": true },
                 {"data": "userMobile", "className": "td-mobile", "width": 7,"orderable": false,"visible": true },
@@ -169,10 +169,9 @@
                 },
                 {
                     "targets": [2],
-                    "data": "customerInfo",
+                    "data": "customerInfId",
                     "render": function (data, type, full) {
-                        var info = data.split(',');
-                        return "<u style=\"cursor:pointer\" class=\"text-primary\" onclick=\"member_show('"+info[1]+"','member-show.html','"+info[0]+"','360','400')\">"+info[1]+"</u>";
+                        return "<u style=\"cursor:pointer\" class=\"text-primary\" onclick=\"member_show('"+data+"','member-show.html','"+data+"','360','400')\">"+data+"</u>";
                     }
                 },
                 {

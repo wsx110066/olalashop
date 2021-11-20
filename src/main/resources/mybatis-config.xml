@@ -11,6 +11,7 @@
         <setting name="logImpl" value="STDOUT_LOGGING"/>
         <!--cacheEnabled 开启全局（二级）缓存  默认不开启二级缓存-->
         <setting name="cacheEnabled" value="true"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/> <!--开启自动驼峰命名规则（camel case）映射,即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射。-->
     </settings>
 
     <plugins>

@@ -166,7 +166,7 @@ function initBeTree() {
 		},
 		context: document.body,
 		success: function (data) {
-			var categoryList = data.respData.result;
+			var categoryList = data.result;
 			var zNodes =[];
 			categoryList.forEach(function(val,index){
 				var arr = {};
@@ -217,7 +217,7 @@ function initTable(service){
 				data: aoData,//这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数
 				async: false,
 				success: function (result) {
-					fnCallback(result.respData);//把返回的数据传给这个方法就可以了,datatable会自动绑定数据的
+					fnCallback(result);//把返回的数据传给这个方法就可以了,datatable会自动绑定数据的
 				},
 				error: function (msg) {
 
@@ -245,10 +245,10 @@ function initTable(service){
 			{"defaultContent": "", "className": "td-check-id", "width": 300,"orderable": false,"visible": true},
 			{"data": "goodsId", "className": "td-id", "width": 300,"orderable": false,"visible": true},
 			{"data": "catyId", "className": "td-caty-id", "width": 300,"orderable": false,"visible": true},
-			{"data": "goodsInfo", "className": "td-name", "width": 300,"orderable": false,"visible": true,},
+			{"data": "goodsName", "className": "td-name", "width": 300,"orderable": false,"visible": true,},
 			{"data": "keywords", "className": "td-kws", "width": 300,"orderable": false,"visible": true},
-			{"data": "businessName", "className": "td-business", "width": 300,"orderable": false,"visible": true},
-			{"data": "goodsImgs", "className": "td-img", "width": 300,"orderable": false,"visible": true},
+			{"data": "businessSn", "className": "td-business", "width": 300,"orderable": false,"visible": true},
+			{"data": "catySn", "className": "td-img", "width": 300,"orderable": false,"visible": true},
 			{"data": "goodsBrief", "className": "text-l", "width": 300,"orderable": false,"visible": true},
 			{"data": "marketPrice", "className": "td-mp", "width": 300,"orderable": false,"visible": true},
 			{"data": "shopPrice", "className": "td-sp", "width": 300,"orderable": false,"visible": true},
@@ -267,12 +267,12 @@ function initTable(service){
 			},
 			{
 				"targets": [3],//哪一列
-				"data": "goodsInfo",
+				"data": "goodsName",
 				"render": function (data, type, full) {
-					var info = data.split(',');
+
 					// return "<a onClick=\"product_show('"+info[1]+"','product-show.html','"+info[0]+"')\" href=\"javascript:;\">" +
 					// 		"<img width=\"60\" class=\"product-thumb\" src=\"temp/product/Thumb/6204.jpg\"></a>";
-					return info[1];
+					return data;
 				}
 			},
 			{
@@ -362,9 +362,9 @@ function product_review(obj,goodsId){
 	},
 	function(){
 		$(obj).parents("tr").find(".td-manage").prepend('<a class="c-primary" onClick="product_apply(this,'+goodsId+')" href="javascript:;" title="申请上线">申请上线</a>');
-		$(obj).parents("tr").find(".td-status").html('<span class="label label-danger radius">未通过</span>');
+		$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已下架</span>');
 		$(obj).remove();
-    	layer.msg('未通过', {icon:5,time:1000});
+    	layer.msg('已下架', {icon:5,time:1000});
 	});	
 }
 
@@ -382,7 +382,7 @@ function product_stop(obj,goodsId){
 				params:JSON.stringify(service)
 			},
 			success: function(data){
-				if(data.respData.respCode = '10000'){
+				if(data.respCode = '10000'){
 					$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="product_start(this,'+goodsId+')" href="javascript:;" title="发布"><i class="Hui-iconfont">&#xe603;</i></a>');
 					$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已下架</span>');
 					$(obj).remove();
@@ -414,7 +414,7 @@ function product_start(obj,goodsId){
 				params:JSON.stringify(service)
 			},
 			success: function(data){
-				if(data.respData.respCode = '10000'){
+				if(data.respCode = '10000'){
 					$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="product_stop(this,'+goodsId+')" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a>');
 					$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
 					$(obj).remove();
@@ -461,7 +461,7 @@ function product_del(obj, goodsId){
 				params:JSON.stringify(service)
 			},
 			success: function(data){
-				if(data.respData.respCode = '10000'){
+				if(data.respCode = '10000'){
 					$(obj).parents("tr").remove();
 					layer.msg('已删除!',{icon:1,time:1000});
 					location.reload();

@@ -22,14 +22,30 @@ public class sysMember implements Serializable {
     private Integer userBalance;
     private String remark;
     private String modifiedTime;
+    private String loginIp;
+    private String loginTime;
 
-    public Integer getUserPoint() {
-        return userPoint;
+    public String getLoginIp() {
+        return loginIp;
     }
 
-    public void setUserPoint(Integer userPoint) {
-        this.userPoint = userPoint;
+    public void setLoginIp(String loginIp) {
+        this.loginIp = loginIp;
     }
+
+    public String getLoginTime() {
+        return loginTime;
+    }
+
+    public void setLoginTime(String loginTime) {
+        this.loginTime = loginTime;
+    }
+
+    public sysMember(){
+
+    }
+
+
 
     public String getRegisterTime() {
         return registerTime;
@@ -87,9 +103,6 @@ public class sysMember implements Serializable {
         this.modifiedTime = modifiedTime;
     }
 
-    public sysMember(){
-
-    }
 
     public sysMember(Integer customerInfId, String customerId, String customerName, String realName, Integer gender, Integer identyCardType, String identyCardNo, String birthday, String userMobile, String email, String city) {
         this.customerInfId = customerInfId;
@@ -103,6 +116,36 @@ public class sysMember implements Serializable {
         this.userMobile = userMobile;
         this.email = email;
         this.city = city;
+    }
+
+    public Integer getUserPoint() {
+        return userPoint;
+    }
+
+    public void setUserPoint(Integer userPoint) {
+        this.userPoint = userPoint;
+    }
+
+    public sysMember(Integer customerInfId, String customerId, String customerName, String realName, Integer gender, Integer identyCardType, String identyCardNo, String birthday, String userMobile, String email, String city, Integer userPoint, String registerTime, String customerStatus, Integer idDel, Integer customerLevel, Integer userBalance, String remark, String modifiedTime) {
+        this.customerInfId = customerInfId;
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.realName = realName;
+        this.gender = gender;
+        this.identyCardType = identyCardType;
+        this.identyCardNo = identyCardNo;
+        this.birthday = birthday;
+        this.userMobile = userMobile;
+        this.email = email;
+        this.city = city;
+        this.userPoint = userPoint;
+        this.registerTime = registerTime;
+        this.customerStatus = customerStatus;
+        this.idDel = idDel;
+        this.customerLevel = customerLevel;
+        this.userBalance = userBalance;
+        this.remark = remark;
+        this.modifiedTime = modifiedTime;
     }
 
     public Integer getCustomerInfId() {
@@ -191,5 +234,30 @@ public class sysMember implements Serializable {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "sysMember{" +
+                "customerInfId=" + customerInfId +
+                ", customerId='" + customerId + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", realName='" + realName + '\'' +
+                ", gender=" + gender +
+                ", identyCardType=" + identyCardType +
+                ", identyCardNo='" + identyCardNo + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", userMobile='" + userMobile + '\'' +
+                ", email='" + email + '\'' +
+                ", city='" + city + '\'' +
+                ", userPoint=" + userPoint +
+                ", registerTime='" + registerTime + '\'' +
+                ", customerStatus='" + customerStatus + '\'' +
+                ", idDel=" + idDel +
+                ", customerLevel=" + customerLevel +
+                ", userBalance=" + userBalance +
+                ", remark='" + remark + '\'' +
+                ", modifiedTime='" + modifiedTime + '\'' +
+                '}';
     }
 }

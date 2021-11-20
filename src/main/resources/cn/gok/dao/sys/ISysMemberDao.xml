@@ -5,7 +5,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.gok.dao.sys.ISysMemberDao">
-    <resultMap id="resultMapGoods" type="cn.gok.beans.sys.sysMember">
+    <resultMap id="resultMapMembers" type="cn.gok.beans.sys.sysMember">
         <id column="CUSTOMER_INF_ID" property="customerInfId"/>
         <result column="CUSTOMER_ID" property="customerId"/>
         <result column="CUSTOMER_NAME" property="customerName"/>
@@ -16,20 +16,54 @@
         <result column="BIRTHDAY" property="birthday"/>
         <result column="USER_MOBILE" property="userMobile"/>
         <result column="EMAIL" property="email"/>
-        <result column="USER_POINT" property="userPoint;"/>
-        <result column="REGISTER_TIME" property="registerTime;"/>
-        <result column="CUSTOMER_STATUS" property="customerStatus;"/>
-        <result column="IS_DEL" property="idDel;"/>
-        <result column="CUSTOMER_LEVEL" property="customerLevel;"/>
-        <result column="USER_BALACE" property="userBalance;"/>
-        <result column="REMARK" property="remark;"/>
-        <result column="MODIFIED_TIME" property="modifiedTime;"/>
+        <result column="USER_POINT" property="userPoint"/>
+        <result column="REGISTER_TIME" property="registerTime"/>
+        <result column="CUSTOMER_STATUS" property="customerStatus"/>
+        <result column="IS_DEL" property="idDel"/>
+        <result column="CUSTOMER_LEVEL" property="customerLevel"/>
+        <result column="USER_BALACE" property="userBalance"/>
+        <result column="REMARK" property="remark"/>
+        <result column="MODIFIED_TIME" property="modifiedTime"/>
+        <result column="LOGIN_IP" property="loginIp"/>
+        <result column="LOGIN_TIME" property="loginTime"/>
 
     </resultMap>
 
-    <insert id="saveMember" parameterType="cn.gok.beans.sys.sysMember">
-        insert into c_customer_info (CUSTOMER_INF_ID,CUSTOMER_ID,CUSTOMER_NAME,REAL_NAME,IDENTY_CARD_TYPE,IDENTY_CARD_NO,USER_MOBILE,EMAIL,GENDER,BIRTHDAY,CITY) values (#{customerInfId},#{customerId},#{customerName},#{realName},#{identyCardType},#{identyCardNo},#{userMobile},#{email},#{gender},#{birthday},#{city})
-    </insert>
+    <update id="saveMember" parameterType="cn.gok.beans.sys.sysMember">
+        update c_customer_info set CUSTOMER_NAME = #{customerName},REAL_NAME = #{realName},IDENTY_CARD_TYPE = #{identyCardType},IDENTY_CARD_NO = #{identyCardNo},USER_MOBILE = #{userMobile},EMAIL = #{email},GENDER = #{gender},BIRTHDAY = #{birthday},CITY = #{city} where CUSTOMER_INF_ID = #{customerInfId}
+    </update>
+    
+    <select id="queryMembersById"  resultType="cn.gok.beans.sys.sysMember">
+        select * from c_customer_info where CUSTOMER_INF_ID = #{customerInfId}
+    </select>
+    
+    <select id="queryMembers"  resultMap="resultMapMembers">
+        select * from c_customer_info LIMIT #{iDisplayStart},#{iDisplayLength};
+    </select>
+
+    <update id="removeMember">
+        update c_customer_info set IS_DEL = #{isDel} where CUSTOMER_INF_ID = #{customerInfId}
+    </update>
+
+    <update id="modifyDelStatusById">
+        update c_customer_info set IS_DEL = #{isDel} where CUSTOMER_INF_ID = #{customerInfId}
+    </update>
+    
+    <update id="removeLevelById">
+        update c_level_info set LEVEL_STATUS = 0 where CUSTOMER_LEVEL_ID = #{customerLevelId}
+    </update>
+    
+    <update id="updateMemberStatus">
+        update c_customer_info set CUSTOMER_STATUS = #{status} where CUSTOMER_INF_ID = #{customerInfId}
+    </update>
+
+    <update id="updateMemberPwd">
+        update c_login set PASSWORD = #{newPassword} where CUSTOMER_ID = #{customerId}
+    </update>
+    
+    <select id="queryLoginLog" resultMap="resultMapMembers">
+        select * from c_customer_info a JOIN c_login_log b ON a.CUSTOMER_ID = b.CUSTOMER_ID LIMIT #{iDisplayStart},#{iDisplayLength}
+    </select>
 
 
 
