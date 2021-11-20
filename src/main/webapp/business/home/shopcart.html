@@ -120,7 +120,7 @@
                     <#list shopCartVos  as shopCartObj>
                         <ul class="item-content clearfix" id="item_${shopCartObj.shopCartId}">
                             <li class="td td-chk">
-                                <div class="cart-checkbox ">
+                                <div class="cart-checkbox">
                                     <input type="checkbox" class="check" id="J_CheckBox_${shopCartObj.shopCartId}" name="check_Id" value="${shopCartObj.shopCartId}">
                                     <label for="J_CheckBox_${shopCartObj.shopCartId}"></label>
                                 </div>
@@ -129,12 +129,12 @@
                                 <div class="item-pic" >
                                     <a href="#" target="_blank" data-title="美康粉黛醉美东方唇膏口红正品 持久保湿滋润防水不掉色护唇彩妆"
                                        class="J_MakePoint" data-point="tbcart.8.12">
-                                        <img src="/olalashop/business/images/kouhong.jpg"
-                                             class="itempic J_ItemImg"></a>
+                                        <img src="${shopCartObj.imgPath}"
+                                             class="itempic J_ItemImg"/></a>
                                 </div>
                                 <div class="item-info">
                                     <div class="item-basic-info">
-                                        <a href="#" target="_blank" title="美康粉黛醉美唇膏 持久保湿滋润防水不掉色" class="item-title J_MakePoint"
+                                        <a href="#" target="_blank" title="${shopCartObj.goodsName}" class="item-title J_MakePoint"
                                            data-point="tbcart.8.11">${shopCartObj.goodsName} </a>
                                     </div>
                                 </div>
@@ -178,10 +178,11 @@
                             </li>
                             <li class="td td-op">
                                 <div class="td-inner">
-                                    <input type="hidden" value="${shopCartObj.collectId}" id="collectId_${shopCartObj.shopCartId}" />
-                                    <input type="hidden" value="${shopCartObj.isCancel}" id="isCancel_${shopCartObj.shopCartId}" />
 
-                                    <a title="移入收藏夹" class="btn-fav" href="#" id="collect_btn_${shopCartObj.shopCartId}" onclick="addCollect('${shopCartObj.shopCartId}');" > 移入收藏夹</a>
+                                    <input type="hidden" id="customerId_${shopCartObj.shopCartId}" value="${shopCartObj.customerId}"/>
+                                    <input type="hidden" id="goodsId_${shopCartObj.shopCartId}" value="${shopCartObj.goodsId}"/>
+
+                                    <a title="移入收藏夹" class="btn-fav" href="#" id="collect_btn_${shopCartObj.shopCartId}" onclick="addCollect('${shopCartObj.shopCartId}', '${shopCartObj.customerId}', '${shopCartObj.goodsId}');" > 移入收藏夹</a>
                                     <a href="javascript:;" data-point-url="#" class="delete" onclick="deleteShopCart('${shopCartObj.shopCartId}');" > 删除</a>
                                 </div>
                             </li>
@@ -324,9 +325,9 @@
     <li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
     <li class="active"><a href="/olalashop/business/shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>
     <li><a href="/olalashop/business/person/index.html"><i class="am-icon-user"></i>我的</a></li>
-    <script type="text/javascript" src="/olalashop/business/home/js/shopcart.js"></script>
 </div>
 </body>
+<script type="text/javascript" src="/olalashop/business/home/js/shopcart.js"></script>
 <script>
     function exit() {
         $.post({

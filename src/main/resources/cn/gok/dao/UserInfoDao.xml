@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.UserInfoDao">
+    <resultMap id="resultMapUserInfo" type="cn.gok.beans.UserInformation">
+        <id column="CUSTOMER_INF_ID" property="customerInfId"></id>
+        <result column="CUSTOMER_ID" property="customerId"></result>
+        <result column="CUSTOMER_NAME" property="customerName"></result>
+        <result column="REAL_NAME" property="realName"></result>
+        <result column="IDENTY_CARD_TYPE" property="identyCardType"></result>
+        <result column="IDENTY_CARD_NO" property="identyCardNo"></result>
+        <result column="USER_MOBILE" property="userMobile"></result>
+        <result column="EMAIL" property="email"></result>
+        <result column="GENDER" property="gender"></result>
+        <result column="BIRTHDAY" property="birthday"></result>
+        <result column="CITY" property="city"></result>
+        <result column="USER_POINT" property="userPoint"></result>
+        <result column="REGISTER_TIME" property="registerTime"></result>
+        <result column="IS_DEL" property="isdel"></result>
+        <result column="CUSTOMER_STATUS" property="customerStatus"></result>
+        <result column="CUSTOMER_LEVEL" property="customerLevel"></result>
+        <result column="USER_BALANCE" property="userBalance"></result>
+        <result column="REMARK" property="remark"></result>
+        <result column="MODIFIED_TIME" property="modifiedTime"></result>
+    </resultMap>
+
+    <select id="queryInfoByNameCustomId" resultMap="resultMapUserInfo">
+        select * from c_customer_info where CUSTOMER_ID = #{id}
+    </select>
+
+    <insert id="insertUserRegister">
+        insert into c_customer_info(CUSTOMER_ID) values(#{customerId})
+    </insert>
+
+    <update id="upadetUserInfo">
+        update c_customer_info set CUSTOMER_NAME=#{name},REAL_NAME=#{realname},USER_MOBILE=#{tel},EMAIL=#{email} where CUSTOMER_ID=#{id}
+    </update>
+</mapper>

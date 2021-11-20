@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--映射文件mapper-->
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.order.IOrderShopCartDao">
+    <resultMap id="resultMapOrderShopCart" type="cn.gok.beans.order.OrderShopCart">
+        <id column="SHOP_CART_ID" property="shopCartId"/>
+        <result column="CUSTOMER_ID" property="customerId"/>
+        <result column="SESSION_ID" property="sessionId"/>
+        <result column="GOODS_ID" property="goodsId"/>
+        <result column="GOODS_SN" property="goodsSn"/>
+        <result column="GOODS_NAME" property="goodsName"/>
+        <result column="CART_TYPE" property="cartType"/>
+        <result column="GOODS_ATTR" property="goodsAttr"/>
+        <result column="GOODS_AMOUNT" property="goodsAmount"/>
+        <result column="MARKET_PRICE" property="marketPrice"/>
+        <result column="SHOP_PRICE" property="shopPrice"/>
+        <result column="REAL_BUY_PRICE" property="realBuyPrice"/>
+        <result column="IS_OPEN_SALE" property="openSaleIs"/>
+        <result column="PARENT_GOODS_ID" property="parentGoodsId"/>
+        <result column="IS_GIFT" property="giftIs"/>
+        <result column="CAN_HANDLE" property="canHandle"/>
+        <result column="ADD_TIME" property="addTime"/>
+        <result column="MODIFIED_TIME" property="modifiedTime"/>
+    </resultMap>
+    <insert id="addShopCart">
+        insert into o_shop_cart (CUSTOMER_ID, GOODS_ID, GOODS_SN, GOODS_NAME, CART_TYPE, GOODS_ATTR, GOODS_AMOUNT,
+                                 MARKET_PRICE, SHOP_PRICE, REAL_BUY_PRICE, IS_OPEN_SALE, IS_GIFT, CAN_HANDLE, ADD_TIME,
+                                 MODIFIED_TIME)
+        values (#{customerId}, #{goodsId}, #{goodsSn}, #{goodsName}, #{cartType}, #{goodsAttr}, #{goodsAmount},
+                #{marketPrice}, #{shopPrice}, #{realBuyPrice},
+                #{openSaleIs}, #{giftIs}, #{canHandle}, #{addTime}, #{modifiedTime})
+    </insert>
+    <update id="updateAmountByShopCartID">
+        update o_shop_cart
+        set GOODS_AMOUNT = #{goodsAmount}
+        where SHOP_CART_ID = #{shopCartId}
+    </update>
+
+    <delete id="deleteShopCartById">
+        delete
+        from o_shop_cart
+        where SHOP_CART_ID = #{shopCartId}
+    </delete>
+
+    <select id="queryAllShopCartByCustomerId" resultMap="resultMapOrderShopCart">
+        select *
+        from o_shop_cart
+        where CUSTOMER_ID = #{customerId}
+    </select>
+
+    <select id="queryShopCartById" resultMap="resultMapOrderShopCart">
+        select *
+        from o_shop_cart
+        where SHOP_CART_ID = #{shopCartId}
+    </select>
+
+</mapper>
+

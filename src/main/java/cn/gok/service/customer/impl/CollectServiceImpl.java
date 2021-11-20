@@ -13,7 +13,10 @@ import cn.gok.service.customer.ICollectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,7 +54,7 @@ public class CollectServiceImpl implements ICollectService {
             List<Picture> pictures = iPictureDao.queryPictureListByRelationId(collect.getGoodsId());
 
             if(good != null && goodsReport != null && pictures != null){
-                CollectVo collectVo = new CollectVo(collect.getCollectId(),good.getGoodsId(),good.getGoodsName(),good.getGoodsTitle(),"pictures.get(0).getLinkUrl()",good.getShopPrice(),good.getPromotePrice(),goodsReport.getMonthSales());
+                CollectVo collectVo = new CollectVo(collect.getCollectId(),good.getGoodsId(),good.getGoodsName(),good.getGoodsTitle(),pictures.get(0).getRealImg(),good.getShopPrice(),good.getPromotePrice(),goodsReport.getMonthSales());
                 result.add(collectVo);
             }
 
@@ -71,4 +74,32 @@ public class CollectServiceImpl implements ICollectService {
     public boolean updateCollectCancelByCollectId(int collectId, boolean isCancel) {
         return iCollectDao.updateCollectCancelByCollectId(collectId, isCancel);
     }
+
+    /**
+     * 通过消费者id和商品id查询收藏信息
+     *
+     * @param customerId
+     * @param goodsId
+     * @return
+     */
+    @Override
+    public List<Collect> queryCollectsByCuAndGoodsId(String customerId, String goodsId) {
+        return iCollectDao.queryCollectsByCuAndGoodsId(customerId, goodsId);
+    }
+
+    /**
+     * 添加一个收藏信息
+     *
+     * @param customerId 消费者id
+     * @param goodsId    商品id
+     * @return
+     */
+    @Override
+    public boolean addCollect(String customerId, String goodsId) {
+        Collect collect = new Collect(customerId, goodsId, new Timestamp(System.currentTimeMillis()), false, new Timestamp((long) (System.currentTimeMillis()*1.2)), false, new Timestamp(System.currentTimeMillis()));
+
+        return iCollectDao.addCollect(collect);
+    }
+
+
 }

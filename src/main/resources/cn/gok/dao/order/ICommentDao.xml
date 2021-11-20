@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.order.ICommentDao">
+    <resultMap id="resultMapComment" type="cn.gok.beans.order.Comment">
+        <id column="COMMENT_ID" property="commentId"></id>
+        <result column="COMMENT_TYPE" property="commentType"></result>
+        <result column="ID_VALUE" property="idValue"></result>
+        <result column="ORDER_ID" property="orderId"></result>
+        <result column="USER_ID" property="userId"></result>
+        <result column="USER_NAME" property="userName"></result>
+        <result column="EMAIL" property="email"></result>
+        <result column="TITLE" property="title"></result>
+        <result column="CONTENT" property="content"></result>
+        <result column="COMMENT_RANK" property="commentRank"></result>
+        <result column="ADD_TIME" property="addTime"></result>
+        <result column="IP_ADDR" property="ipAddr"></result>
+        <result column="PARENT_ID" property="parentId"></result>
+        <result column="AUDIT_STATUS" property="auditStatus"></result>
+        <result column="AUDIT_TIME" property="auditTime"></result>
+        <result column="MODIFIED_TIME" property="modifiedTime"></result>
+        <collection property="orderDetail" ofType="OrderDetail" select="cn.gok.dao.OrderDetailDao.queryDetailByOrderId" column="ORDER_ID"></collection>
+    </resultMap>
+
+    <select id="queryCommentByUserId" resultMap="resultMapComment">
+        select * from o_comment where USER_ID=#{id}
+    </select>
+
+</mapper>

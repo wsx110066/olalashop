@@ -1,7 +1,10 @@
 package cn.gok.dao.good;
 
 import cn.gok.beans.good.Goods;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author 14489
@@ -15,4 +18,6 @@ public interface IGoodsDao {
      * @return
      */
     Goods queryGoodsByGoodsId(String goodsId);
+
+    public List<Goods> queryGoodListByname(@Param("name") String name);
 }
