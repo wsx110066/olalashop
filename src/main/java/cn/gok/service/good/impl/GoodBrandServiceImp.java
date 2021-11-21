@@ -16,4 +16,6 @@ public class GoodBrandServiceImp implements IGoodBrandService {
     public List<GoodsBrand> queryAllBrand() {
         return goodBrandDao.queryAllBrand();
     }
+    
+
 }

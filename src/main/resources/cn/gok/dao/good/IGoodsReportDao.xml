@@ -18,5 +18,7 @@
         from g_goods_report
         where GOODS_ID = #{goodsId}
     </select>
+
+
 </mapper>
 

@@ -159,13 +159,13 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">销售开始时间：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'promoteEndDate\')||\'%y-%M-%d\'}' })" id="promoteStartDate" name="promoteStartDate" class="input-text Wdate" style="width:180px;">
+				<input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'#F{$dp.$D(\'promoteStartDate\')||\'%y-%M-%d\'}' })" id="promoteStartDate" name="promoteStartDate" class="input-text Wdate" style="width:180px;">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">销售结束时间：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'promoteStartDate\')}' })" id="promoteEndDate" name="promoteEndDate" class="input-text Wdate" style="width:180px;">
+				<input type="text" onfocus="WdatePicker({ dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'promoteEndDate\')}' })" id="promoteEndDate" name="promoteEndDate" class="input-text Wdate" style="width:180px;">
 			</div>
 		</div>
 		<div class="row cl">
@@ -334,8 +334,8 @@ $(function(){
 					params:JSON.stringify($(form).serializeObject())
 				},
 				success:function(data){
-					if(data.respData.respCode == 10000){
-						if(data.respData.result == 1){
+					if(data.respCode == 10000){
+						if(data.result == 1){
 							layer.msg('信息保存成功!',{icon: 6,time:2000});
 							parent.location.reload();
 							parent.layer.close(index);
@@ -344,7 +344,7 @@ $(function(){
 							layer.msg('信息保存失败!',{icon: 6,time:2000});
 						}
 					}else{
-						layer.msg(data.respData.respMsg,{icon: 6,time:2000});
+						layer.msg(data.respMsg,{icon: 6,time:2000});
 						parent.location.reload();
 						// parent.$('.btn-refresh').click();
 					}
@@ -369,38 +369,38 @@ $(function(){
 				params:JSON.stringify(service)
 			},
 			success:function(data){
-				if(data.respData.respCode == 10000){
-					var goodsInfo = data.respData.result;
+				if(data.respCode == 10000){
+					var goodsInfo = data.result;
 					$("#goodsId").val(goodsInfo.goodsId);
 					$("#goodsName").val(goodsInfo.goodsName);
 					$("#goodsTitle").val(goodsInfo.goodsTitle);
 					$("#catyId").val(goodsInfo.catyId);
 					$("#sortOrl").val(goodsInfo.sortOrl);
-					$("#effectiveDate").val(goodsInfo.effectiveDate);
+					$("#effectiveDate").val(GMTToStr(goodsInfo.effectiveDate));
 					$("#expiryDays").val(goodsInfo.expiryDays);
 					var isComment = goodsInfo.isComment;
 					$('#checkbox-1').val(isComment);
 					if(isComment == 1){
 						$('#checkbox-1').prop('checked',true);
 					}
-					$("#extends").val(goodsInfo.extends);
+					//$("#extends").val(goodsInfo.extends);
 					$("#businessSn").val(goodsInfo.businessSn);
-					$("#produceAddr").val(goodsInfo.produceAddr);
-					$("#ingredients").val(goodsInfo.ingredients);
-					$("#sourceSupplier").val(goodsInfo.sourceSupplier);
-					$("#specs").val(goodsInfo.specs);
-					$("#weight").val(goodsInfo.weight);
+					//$("#produceAddr").val(goodsInfo.produceAddr);
+					//$("#ingredients").val(goodsInfo.ingredients);
+					//$("#sourceSupplier").val(goodsInfo.sourceSupplier);
+					//$("#specs").val(goodsInfo.specs);
+					//$("#weight").val(goodsInfo.weight);
 					$("#shopPrice").val(goodsInfo.shopPrice);
 					$("#marketPrice").val(goodsInfo.marketPrice);
-					$("#costPrice").val(goodsInfo.costPrice);	78
+					$("#costPrice").val(goodsInfo.costPrice);
 					$("#promotePrice").val(goodsInfo.promotePrice);
-					$("#promoteStartDate").val(goodsInfo.promoteStartDate);
-					$("#promoteEndDate").val(goodsInfo.promoteEndDate);
+					$("#promoteStartDate").val(GMTToStr(goodsInfo.promoteStartDate));
+					$("#promoteEndDate").val(GMTToStr(goodsInfo.promoteEndDate));
 					$("#keywords").val(goodsInfo.keywords);
 					$("#goodsBrief").val(goodsInfo.goodsBrief);
 					$("#goodsDesc").val(goodsInfo.goodsDesc);
 
-					$("#category").val(goodsInfo.catyName+'['+goodsInfo.catyId+']');
+					//$("#category").val(goodsInfo.catyName+'['+goodsInfo.catyId+']');
 					$("#catyId").val(goodsInfo.catyId);
 				}else{
 					layer.msg('未查询到数据!',{icon: 6,time:2000});
@@ -440,6 +440,12 @@ $(function(){
 			arr2[ta[0]]=ta[1];
 		}
 		return arr2[param];
+	}
+
+	function GMTToStr(time) {
+		let date = new Date(time)
+		let Str=date.getFullYear() + '-' + (date.getMonth()+1)+ '-' + date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()
+		return Str
 	}
 
 	var uploader = WebUploader.create({
@@ -754,7 +760,7 @@ $(function(){
 			//  获取input的值
 			var imgPathArr = $("#imgPathArr").val();
 			//  获取文件的地址
-			var resultPath = data.respData.result;     // 获取后端保存的文件地址
+			var resultPath = data.result;     // 获取后端保存的文件地址
 			//  保存在input标签里面
 			$("#imgPathArr").val(imgPathArr +','+ resultPath);
 		});

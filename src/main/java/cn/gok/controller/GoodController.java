@@ -2,12 +2,8 @@ package cn.gok.controller;
 
 
 
-import cn.gok.beans.good.Category;
-import cn.gok.beans.good.Goods;
-import cn.gok.beans.good.GoodsBrand;
-import cn.gok.service.good.CategoryService;
-import cn.gok.service.good.IGoodBrandService;
-import cn.gok.service.good.IGoodsService;
+import cn.gok.beans.good.*;
+import cn.gok.service.good.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +21,13 @@ public class GoodController {
     CategoryService goryService;
     @Autowired
     IGoodBrandService brandService;
+
+    @Autowired
+    IGoodsReportService reportService;
+
+    @Autowired
+    GoodPicService picService;
+
     @RequestMapping("/queryGoodsByParam.do")
     public ModelAndView queryGood(String keywords){
         List<Goods> goods = goodService.queryGoodListByName(keywords);
@@ -38,11 +41,25 @@ public class GoodController {
     }
 
 
-    //控制跳转详情页面
+    /*
+商品详情控制
+ */
     @RequestMapping("/queryGoodsDetail.do")
-    public String GoodDtailreturn(){
-
-        return "/business/home/introduction";
+    public ModelAndView GoodDtailreturn(String goodsId){
+        ModelAndView view =new ModelAndView("/business/home/introduction");
+        Goods good = goodService.queryGoodsByGoodsId(goodsId);
+        GoodsReport goodReport = reportService.queryGoodsReportByGoodsId(goodsId);
+        List<Picture> goodPics = picService.queryPicByGoodId(goodsId);
+        System.out.println(goodPics);
+        if (goodPics!=null){
+            good.setPictureVos(goodPics);
+        }
+        good.setMonthSales(goodReport.getMonthSales());
+        good.setCountSales(goodReport.getCountSales());
+        good.setCountComms(goodReport.getCountComms());
+        good.setCommendScore(goodReport.getCommendScore());
+        view.addObject("goodsInfo",good);
+        return view;
 
     }
 

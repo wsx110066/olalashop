@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.user.IUserPointDao">
+
+    
+    <resultMap id="resultMapUserPoint" type="cn.gok.beans.user.UserPoint">
+        <id column="POINT_ID" property="pointId"></id>
+        <result column="CUSTOMER_ID" property="customerId"></result>
+        <result column="SOURCE" property="source"></result>
+        <result column="REFER_NUM" property="referNum"></result>
+        <result column="CHARGE_POINT" property="chargePoint"></result>
+
+        <result column="RANK_POINTS" property="rankPoints"></result>
+        <result column="PAY_POINTS" property="payPoints"></result>
+        <result column="CHANGE_DESC" property="changeDesc"></result>
+        <result column="CREATE_TIME" property="createTime"></result>
+    </resultMap>
+
+    
+    <select id="queryCustomerPoints" resultMap="resultMapUserPoint" >
+        select * from c_point_log where CUSTOMER_ID =#{customerId}
+    </select>
+
+    <select id="queryCustomerSignInPoints" resultType="Date" >
+        SELECT CREATE_TIME FROM c_point_log where CUSTOMER_ID =#{customerId} and SOURCE=1 order by CREATE_TIME desc LIMIT 1
+    </select>
+
+    <insert id="insertCustomerPoints">
+        INSERT c_point_log(POINT_ID,CUSTOMER_ID,SOURCE,CHARGE_POINT,CREATE_TIME) VALUES(DEFAULT,#{customerId},0,5,#{createTime})
+    </insert>
+
+
+
+
+
+
+
+</mapper>

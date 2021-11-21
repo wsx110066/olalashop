@@ -12,4 +12,5 @@ public interface GoodsBrandService {
 
     //按品牌类别查询商品所有品牌接口
     List<GoodsBrand> queryGoodsBrandListById(Integer categoryId);
+
 }

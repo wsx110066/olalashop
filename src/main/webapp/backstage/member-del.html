@@ -126,7 +126,7 @@ function initTable(service){
 		bPaginate: true, //翻页功能
 		sPaginationType: "full_numbers", //分页显示样式
 		serverSide: true, //启用服务器分页
-		sAjaxSource: "../memberApi/queryMembers.do", //服务端请求数据接口
+		sAjaxSource: "../MemberApi/queryMembers.do", //服务端请求数据接口
 		searching: false, //关闭 datatables 的搜索框
 		destroy: true, //解决重新渲染问题
 		iDisplayLength: 10, //每页显示数量
@@ -249,7 +249,7 @@ function member_reset(obj,id){
 	layer.confirm('确认要还原吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '../memberApi/modifyDelStatusById.do',
+			url: '../MemberApi/modifyDelStatusById.do',
 			dataType: 'json',
 			data:{
 				params: JSON.stringify(service)
@@ -275,7 +275,7 @@ function member_del(obj, id){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '../memberApi/removeMember.do',
+			url: '../MemberApi/removeMember.do',
 			dataType: 'json',
 			data:{
 				params: JSON.stringify(service)

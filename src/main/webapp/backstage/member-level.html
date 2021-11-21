@@ -212,7 +212,7 @@
         layer.confirm('确认要删除吗？', function (index) {
             $.ajax({
                 type: 'POST',
-                url: '../memberApi/removeLevelById.do',
+                url: '../MemberApi/removeLevelById.do',
                 dataType: 'json',
                 data: {
                     params: JSON.stringify(service)

@@ -31,11 +31,13 @@
 <body>
 <article class="page-container">
 	<form action="" method="post" class="form form-horizontal" id="form-member-add">
+
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text" value="" placeholder="" id="customerName" name="customerName">
 				<input type="hidden" class="input-text" value="" id="customerInfId" name="customerInfId">
+				<input type="hidden" class="input-text" value="" id="customerId" name="customerId">
 			</div>
 		</div>
 		<div class="row cl">
@@ -153,8 +155,8 @@ $(function(){
 		radioClass: 'iradio-blue',
 		increaseArea: '20%'
 	});
-	
-	$("#form-member-add").validate({
+
+				$("#form-member-add").validate({
 		rules:{
 			customerName:{
 				required:true,
@@ -231,21 +233,22 @@ function initInfo(customerInfId){
 	service.customerInfId = customerInfId;
 	$.ajax({
 		type: 'post',
-		url: '../memberApi/queryMembersById.do',
+		url: '../MemberApi/queryMembersById.do',
 		async:false,
 		data:{
 			params:JSON.stringify(service)
 		},
 		success:function(data){
-			if(data.respData.respCode == 10000){
-				var customerInfo = data.respData.result;
+			if(data.respCode == 10000){
+				var customerInfo = data.result;
 				$("#customerInfId").val(customerInfo.customerInfId);
+				$("#customerId").val(customerInfo.customerId);
 				$("#customerName").val(customerInfo.customerName);
 				$("#realName").val(customerInfo.realName);
 				$("#email").val(customerInfo.email);
 				$("#birthday").val(customerInfo.birthday);
 				$("#userMobile").val(customerInfo.userMobile);
-				$("#city").val(customerInfo.cityCode);
+				$("#city").val(customerInfo.city);
 				$("#identyCardType").val(customerInfo.identyCardType);
 				$("#identyCardNo").val(customerInfo.identyCardNo);
 				$("#remark").val(customerInfo.remark);

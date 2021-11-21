@@ -30,4 +30,26 @@ public interface IOrderShopCartService {
      * @return
      */
     Boolean addShopCart(String customerId, String goodsId);
+
+    /**
+     * 更新购物车商品数量
+     * @param shopCartIdArr 购物车id数组
+     * @param goodsAmountArr 商品数量数组
+     * @return
+     */
+    Boolean updateAmountByShopCartID(String shopCartIdArr, String goodsAmountArr);
+
+    /**
+     * 通过购物车id查询一个购物车信息
+     * @param shopCartId 购物车id
+     * @return
+     */
+    OrderShopCart queryShopCartById(Long shopCartId);
+
+    /**
+     * 通过购物车id数组查询购物车信息
+     * @param shopCartIdArr 购物车id数组
+     * @return
+     */
+    List<OrderShopCart> queryShopCartsByIdArray(String shopCartIdArr);
 }

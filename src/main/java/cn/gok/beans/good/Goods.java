@@ -1,6 +1,7 @@
 package cn.gok.beans.good;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * 商品类
@@ -179,7 +180,54 @@ public class Goods {
      */
     private String updateBy;
 
+    private int monthSales;
+    private int countSales;
+    private int countComms;
+    private int commendScore;
+
+    private List<Picture> pictureVos;
+
     public Goods() {
+    }
+
+    public int getMonthSales() {
+        return monthSales;
+    }
+
+    public void setMonthSales(int monthSales) {
+        this.monthSales = monthSales;
+    }
+
+    public int getCountSales() {
+        return countSales;
+    }
+
+    public void setCountSales(int countSales) {
+        this.countSales = countSales;
+    }
+
+    public int getCountComms() {
+        return countComms;
+    }
+
+    public void setCountComms(int countComms) {
+        this.countComms = countComms;
+    }
+
+    public int getCommendScore() {
+        return commendScore;
+    }
+
+    public void setCommendScore(int commendScore) {
+        this.commendScore = commendScore;
+    }
+
+    public List<Picture> getPictureVos() {
+        return pictureVos;
+    }
+
+    public void setPictureVos(List<Picture> pictureVos) {
+        this.pictureVos = pictureVos;
     }
 
     public String getGoodsId() {

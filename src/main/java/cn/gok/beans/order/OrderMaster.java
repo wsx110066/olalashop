@@ -91,6 +91,21 @@ public class OrderMaster {
     public OrderMaster() {
     }
 
+    public OrderMaster(String orderSn, String transactionNo, String customerId, int payType, Timestamp payTime, int orderMoney, int districtMoney, int payMoney, Timestamp createTime, int orderStatus, int orderPoint, Timestamp modifiedTime) {
+        this.orderSn = orderSn;
+        this.transactionNo = transactionNo;
+        this.customerId = customerId;
+        this.payType = payType;
+        this.payTime = payTime;
+        this.orderMoney = orderMoney;
+        this.districtMoney = districtMoney;
+        this.payMoney = payMoney;
+        this.createTime = createTime;
+        this.orderStatus = orderStatus;
+        this.orderPoint = orderPoint;
+        this.modifiedTime = modifiedTime;
+    }
+
     public long getOrderId() {
         return orderId;
     }

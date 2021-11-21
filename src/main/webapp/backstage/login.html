@@ -105,7 +105,7 @@ $(function() {
     submitHandler:function(form){
       $(form).ajaxSubmit({
         type: 'POST',
-        url: '../sysAccountApi/login.do',
+        url: '/olalashop/sysAccountApi/login.do',
         async:true,
         data:{
           params:JSON.stringify($(form).serializeObject())

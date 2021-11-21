@@ -8,6 +8,8 @@ import cn.gok.beans.order.Ordermsg;
 import cn.gok.beans.user.Consignee;
 import cn.gok.beans.user.UserInformation;
 import cn.gok.beans.user.UserLogin;
+import cn.gok.beans.user.UserPoint;
+import cn.gok.dao.user.IUserPointDao;
 import cn.gok.service.order.ICommentService;
 import cn.gok.service.order.IOrderDetailService;
 import cn.gok.service.order.IOrderMasterService;
@@ -22,7 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -41,6 +45,9 @@ public class UserController {
     IOrderMasterService masterService;
     @Autowired
     ICommentService commentService;
+
+    @Autowired
+    IUserPointDao iUserPointDao;
 
     @ResponseBody
     @RequestMapping(value = "/login.do")
@@ -61,6 +68,10 @@ public class UserController {
         System.out.println(status);
         return status;
     }
+
+        /*
+    用户注册入口
+    */
     @ResponseBody
     @RequestMapping("/register.do")
     public String Register(String email, String password, HttpSession session){
@@ -88,6 +99,9 @@ public class UserController {
         return Integer.toString(status);
     }
 
+     /*
+  用户信息入口
+   */
     @RequestMapping("/info.do")
     public ModelAndView InfoReturn(HttpSession session){
         ModelAndView view =new ModelAndView("/business/person/information");
@@ -99,6 +113,9 @@ public class UserController {
         return view;
     }
 
+    /*
+    用户信息更新入口
+    */
     @RequestMapping("/updateUserInfo.do")
     public ModelAndView updateUser(@RequestParam("ctm_name") String name, @RequestParam("r_name") String realname, @RequestParam("user-phone") String tel, @RequestParam("user-email") String email, HttpSession session){
         ModelAndView view =new ModelAndView("/business/person/information");
@@ -111,6 +128,9 @@ public class UserController {
         return view;
     }
 
+    /*
+ 用户地址管理
+  */
     @RequestMapping("/consignee.do")
     public ModelAndView addressUser(HttpSession session){
         ModelAndView view =new ModelAndView("/business/person/address");
@@ -122,6 +142,9 @@ public class UserController {
         return view;
     }
 
+      /*
+  添加用户地址
+   */
     @ResponseBody
     @RequestMapping("/addConsignee.do")
     public String addConsignee(@RequestParam("user_name") String name, @RequestParam("user_phone") String phone, @RequestParam("sheng") String province, @RequestParam("shi") String city, @RequestParam("qu") String district, @RequestParam("user_intro") String address, HttpSession session){
@@ -132,6 +155,10 @@ public class UserController {
         consigneeService.insertConsignee(name,phone,province,city,district,address,useridstr);
         return status;
     }
+
+    /*
+用户地址删除入口
+ */
     @ResponseBody
     @RequestMapping("delConsignee.do")
     public String delConsignee(@RequestParam("user_addId") int addressId){
@@ -145,6 +172,9 @@ public class UserController {
         return status;
     }
 
+    /*
+订单管理入口
+*/
     @RequestMapping("/orderManager.do")
     public ModelAndView orderReturn(HttpSession session){
         ModelAndView view =new ModelAndView("business/person/order");
@@ -175,6 +205,9 @@ public class UserController {
         return view;
     }
 
+    /*
+用户评论管理入口
+*/
     @RequestMapping("/commentGoods.do")
     public ModelAndView Comment(HttpSession session){
         ModelAndView view = new ModelAndView("business/person/comment");
@@ -186,18 +219,106 @@ public class UserController {
         return view;
     }
 
+    /*
+用户退出登陆入口
+*/
+    @ResponseBody
+    @RequestMapping("/loginOut.do")
+    public String UserLoinOut(HttpSession session){
+        String status="10000";
+        session.setAttribute("LoginUser",null);
+        session.setAttribute("LoginUserName",null);
+        return status;
+    }
 
+    //查询会员积分
     @RequestMapping("/points.do")
-    public ModelAndView points(){
+    public ModelAndView points(HttpSession session){
         ModelAndView mv = new ModelAndView("business/person/points");
+        UserLogin loginUser = (UserLogin) session.getAttribute("LoginUser");
+        List<UserPoint> point = iUserPointDao.queryCustomerPoints(loginUser.getUserID());
+        mv.addObject("point",point);
+
         return mv;
     }
 
+    //签到获取积分
     @ResponseBody
     @RequestMapping("/addPoint.do")
-    public  String addPoint(){
-        String date="10000";
-        System.out.println(date);
+    public  String addPoint(HttpSession session){
+        //获取当前时间
+        Date datetime=new Date();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+
+
+        UserLogin loginUser = (UserLogin) session.getAttribute("LoginUser");
+        String customerId=loginUser.getUserID();
+        //获取上传签到时间
+        Date end_datetime = iUserPointDao.queryCustomerSignInPoints(customerId);
+        //记录不同的年月份
+        int code=-1;
+        if(end_datetime!=null) {
+            //转化为字符格式
+            String new_Time=sdf.format(datetime);
+            String end_Time = sdf.format(end_datetime);
+            String[] end_time = end_Time.split("-");
+            String[] new_time = new_Time.split("-");
+
+            for (int i=0;i<3;i++){
+                int i1 = Integer.parseInt(end_time[i]);
+                int i2 = Integer.parseInt(new_time[i]);
+                if(i1!=i2){
+                    code=i;
+                    if(i==2){
+                        if (i2-i1==1){
+                            code=2;
+                        }else{
+                            code=3;
+                        }
+                    }
+                    break;
+
+                }
+
+            }
+
+        }else{
+            code=0;
+        }
+        //状态码
+        String date=null;
+        switch (code){
+            case 0:
+                date="10000";
+                break;
+            case 1:
+                date="10000";
+                break;
+            case 2:
+                date="10001";
+                break;
+            case 3:
+                date="10002";
+                break;
+            default:
+                date="10003";
+                return date;
+
+
+        }
+        Integer integer = iUserPointDao.insertCustomerPoints(customerId, datetime);
+        System.out.println(integer);
         return date;
+    }
+
+    //查询会员积分
+    @RequestMapping("/balance.do")
+    public ModelAndView balance(HttpSession session){
+        ModelAndView mv = new ModelAndView("business/person/wallet");
+//        UserLogin loginUser = (UserLogin) session.getAttribute("LoginUser");
+//        List<UserPoint> point = iUserPointDao.queryCustomerPoints(loginUser.getUserID());
+//        mv.addObject("point",point);
+
+        return mv;
     }
 }

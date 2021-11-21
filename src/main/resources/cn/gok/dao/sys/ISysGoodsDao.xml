@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--映射文件mapper-->
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.sys.ISysGoodsDao">
+    <resultMap id="resultMapGoods" type="cn.gok.beans.sys.SysGoods">
+        <id column="GOODS_ID" property="goodsId"/>
+        <result column="GOODS_NAME" property="goodsName"/>
+        <result column="KEYWORDS" property="keywords"/>
+        <result column="CATY_ID" property="catyId"/>
+        <result column="CATY_SN" property="catySn"/>
+        <result column="BUSINESS_SN" property="businessSn"/>
+        <result column="GOODS_BRIEF" property="goodsBrief"/>
+        <result column="MARKET_PRICE" property="marketPrice"/>
+        <result column="SHOP_PRICE" property="shopPrice"/>
+        <result column="PROMOTE_PRICE" property="promotePrice"/>
+        <result column="IS_ONSALE" property="isOnSale"/>
+
+        <result column="GOODS_TITLE" property="goodsTitle"/>
+        <result column="SORT_ORL" property="sortOrl"/>
+        <result column="EFFECTIVE_DATE" property="effectiveDate"/>
+        <result column="EXPIRY_DAYS" property="expiryDays"/>
+        <result column="IS_COMMENT" property="isComment"/>
+        <result column="COST_PRICE" property="costPrice"/>
+        <result column="PROMOTE_START_DATE" property="promoteStartDate"/>
+        <result column="PROMOTE_END_DATE" property="promoteEndDate"/>
+        <result column="GOODS_DESC" property="goodsDesc"/>
+
+
+
+    </resultMap>
+
+    <select id="queryGoodsList" resultMap="resultMapGoods">
+        select * from g_goods LIMIT #{iDisplayStart},#{iDisplayLength}
+    </select>
+    
+    <select id="queryGoodsInfoById" resultMap="resultMapGoods">
+        select * from g_goods where GOODS_ID = #{goodsId}
+    </select>
+
+    <update id="saveGoodsInfo" parameterType="cn.gok.beans.sys.SysGoods" >
+        update g_goods set GOODS_NAME = #{goodsName}, KEYWORDS = #{keywords}, CATY_ID = #{catyId} , BUSINESS_SN = #{businessSn} ,GOODS_BRIEF = #{goodsBrief} ,MARKET_PRICE = #{marketPrice}, SHOP_PRICE = #{shopPrice}, PROMOTE_PRICE = #{promotePrice},  GOODS_TITLE = #{goodsTitle}, SORT_ORL = #{sortOrl}, EFFECTIVE_DATE = #{effectiveDate}, EXPIRY_DAYS = #{expiryDays}, IS_COMMENT = #{isComment} ,COST_PRICE = #{costPrice} ,PROMOTE_START_DATE = #{promoteStartDate} ,PROMOTE_END_DATE = #{promoteEndDate} ,GOODS_DESC = #{goodsDesc} where GOODS_ID = #{goodsId}
+    </update>
+
+    <update id="updateGoodsIsOnById" parameterType="cn.gok.beans.sys.SysGoods">
+        update g_goods set IS_ONSALE=#{isOnSale} where GOODS_ID = #{goodsId}
+    </update>
+
+    <update id="removeGoodsById" parameterType="cn.gok.beans.sys.SysGoods">
+        update g_goods set IS_DEL = 1 where GOODS_ID = #{goodsId};
+    </update>
+
+
+
+</mapper>

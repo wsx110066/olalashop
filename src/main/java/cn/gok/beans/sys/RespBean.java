@@ -1,9 +1,12 @@
 package cn.gok.beans.sys;
 
+import java.util.List;
+
 public class RespBean {
     private Object result;
     private Integer respCode;
     private String respMsg;
+    private Object data;
 
     public Object getResult() {
         return result;
@@ -27,5 +30,13 @@ public class RespBean {
 
     public void setRespMsg(String respMsg) {
         this.respMsg = respMsg;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
     }
 }
