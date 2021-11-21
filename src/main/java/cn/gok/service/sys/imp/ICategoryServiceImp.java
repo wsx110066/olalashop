@@ -1,6 +1,6 @@
 package cn.gok.service.sys.imp;
 
-import cn.gok.beans.sys.Category;
+import cn.gok.beans.sys.SysCategory;
 import cn.gok.dao.sys.ICategoryDao;
 import cn.gok.service.sys.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ public class ICategoryServiceImp implements ICategoryService {
 
 
     @Override
-    public List<Category> queryCategoryList() {
+    public List<SysCategory> queryCategoryList() {
         return iCategoryDao.queryCategoryList();
     }
 }

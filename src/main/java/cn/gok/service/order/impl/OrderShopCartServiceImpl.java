@@ -40,12 +40,12 @@ public class OrderShopCartServiceImpl implements IOrderShopCartService {
     @Override
     public List<OrderShopCart> queryAllShopCartByCustomerId(String customerId) {
         List<OrderShopCart> orderShopCarts = iOrderShopCartDao.queryAllShopCartByCustomerId(customerId);
-        for (OrderShopCart orderShopCart : orderShopCarts) {
+        for(OrderShopCart orderShopCart : orderShopCarts){
 
             // 获取图片集合
             List<Picture> pictures = iPictureDao.queryPictureListByRelationId(orderShopCart.getGoodsId());
 
-            if (pictures != null) {
+            if(pictures != null){
                 orderShopCart.setImgPath(pictures.get(0).getThumbImg());
             }
         }
@@ -75,10 +75,10 @@ public class OrderShopCartServiceImpl implements IOrderShopCartService {
         Goods goods = iGoodsDao.queryGoodsByGoodsId(goodsId);
         List<Picture> pictures = iPictureDao.queryPictureListByRelationId(goodsId);
         OrderShopCart orderShopCart;
-        if (pictures != null) {
-            orderShopCart = new OrderShopCart(customerId, goodsId, goods.getGoodsSn(), goods.getGoodsName(), 0, "", 3, goods.getMarketPrice(), goods.getShopPrice(), goods.getPromotePrice(), true, 0, false, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), pictures.get(0).getThumbImg());
-        } else {
-            orderShopCart = new OrderShopCart(customerId, goodsId, goods.getGoodsSn(), goods.getGoodsName(), 0, "", 3, goods.getMarketPrice(), goods.getShopPrice(), goods.getPromotePrice(), true, 0, false, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), "");
+        if(pictures != null){
+            orderShopCart = new OrderShopCart(customerId, goodsId, goods.getGoodsSn(), goods.getGoodsName(),0, "", 3, goods.getMarketPrice(), goods.getShopPrice(), goods.getPromotePrice(), true, 0, false, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), pictures.get(0).getThumbImg());
+        }else{
+            orderShopCart = new OrderShopCart(customerId, goodsId, goods.getGoodsSn(), goods.getGoodsName(),0, "", 3, goods.getMarketPrice(), goods.getShopPrice(), goods.getPromotePrice(), true, 0, false, new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), "");
         }
         return iOrderShopCartDao.addShopCart(orderShopCart);
     }
@@ -144,6 +144,7 @@ public class OrderShopCartServiceImpl implements IOrderShopCartService {
         }
         return result;
     }
+
 
 
 }

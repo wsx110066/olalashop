@@ -2,12 +2,11 @@ package cn.gok.controller;
 
 import cn.gok.beans.customer.Collect;
 import cn.gok.beans.customer.CollectVo;
-import cn.gok.dao.customer.ICollectDao;
-import cn.gok.dao.good.IGoodsReportDao;
 import cn.gok.service.customer.ICollectService;
 import cn.gok.service.good.IGoodsReportService;
 import cn.gok.service.good.IGoodsService;
 import cn.gok.service.good.IPictureService;
+import cn.gok.service.user.IConsigneeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +45,13 @@ public class PersonalCenterController {
      */
     @Autowired
     IPictureService iPictureService;
+
+    /**
+     * 地址服务
+     */
+    @Autowired
+    IConsigneeService iConsigneeService;
+
 
     /**
      * 跳转到 我的收藏 页面
@@ -139,5 +145,20 @@ public class PersonalCenterController {
         mv.addObject("collectVos", collectVos);
         mv.setViewName("business/person/foot");
         return mv;
+    }
+
+    @RequestMapping("/addConsignee.do")
+    @ResponseBody
+    public String addConsignee(String userName, String userPhone, String sheng, String shi, String qu, String userInfo) {
+        String msg = "";
+        String customerId = "1598777623923";
+        Boolean flag = iConsigneeService.addConsignee(customerId, userName, userPhone, sheng, shi, qu, userInfo);
+        if (flag) {
+            msg = "10000";
+        } else {
+            msg = "-10000";
+        }
+        return msg;
+
     }
 }

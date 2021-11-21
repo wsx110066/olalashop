@@ -19,5 +19,17 @@
         <result column="MODIFIED_TIME" property="modifiedTime"/>
     </resultMap>
 
+    <insert id="addOrderDetail">
+        insert into o_order_detail (ORDER_ID, GOODS_ID, GOODS_NAME, GOODS_CNT, GOODS_PRICE,
+                                    MODIFIED_TIME)
+        values (#{orderId}, #{goodsId}, #{goodsName}, #{goodsCnt}, #{goodsPrice}, #{modifiedTime})
+    </insert>
+
+    <select id="queryDetailByOrderId" resultMap="resultMapOrderDetail">
+        select * from o_order_detail where ORDER_ID=#{orderId}
+    </select>
+
+
+
 </mapper>
 

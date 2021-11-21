@@ -17,4 +17,7 @@ public interface IPictureDao {
      * @return
      */
     List<Picture> queryPictureListByRelationId(String relationId);
+
+
+
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.gok.dao.good.GoodPicDao">
+    <resultMap id="resultMapPic" type="cn.gok.beans.good.Picture">
+        <id column="PICTURE_ID" property="pictureId"></id>
+        <result column="PICTURE_TITLE" property="pictureTitle"></result>
+        <result column="PREF_TITLE" property="prefTitle"></result>
+        <result column="KEYWORDS" property="keywords"></result>
+        <result column="RELATION_ID" property="relationId"></result>
+        <result column="PIC_CATEGORY" property="picCategory"></result>
+        <result column="RELATION_TYPE" property="relationType"></result>
+        <result column="AUTHOR" property="author"></result>
+        <result column="SOURCE" property="source"></result>
+        <result column="IS_ALLOW_COMMENT" property="isAllowComment"></result>
+        <result column="ABSTRACTS" property="abstracts"></result>
+        <result column="PIC_DESC" property="picDesc"></result>
+        <result column="THUMB_IMG" property="thumbImg"></result>
+        <result column="REAL_IMG" property="realImg"></result>
+        <result column="ORIGINAL_IMG" property="originalImag"></result>
+        <result column="LINK_URL" property="linkUrl"></result>
+        <result column="WIDTH" property="width"></result>
+        <result column="HEIGHT" property="height"></result>
+        <result column="SORT_ORL" property="sortOrl"></result>
+        <result column="STATUS" property="status"></result>
+        <result column="DEPLOY_TIME" property="deployTime"></result>
+        <result column="OUTLINE_TIME" property="outlineTime"></result>
+        <result column="IS_MASTER" property="isMaster"></result>
+        <result column="CREATE_TIME" property="createTime"></result>
+        <result column="CREATE_BY" property="createBy"></result>
+        <result column="UPDATE_TIME" property="updateTime"></result>
+        <result column="UPDATE_BY" property="updateBy"></result>
+    </resultMap>
+
+    <select id="queryPicByGoodId" resultMap="resultMapPic">
+        select * from g_picture where RELATION_ID=#{id}
+    </select>
+</mapper>

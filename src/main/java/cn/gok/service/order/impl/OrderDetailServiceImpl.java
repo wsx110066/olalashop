@@ -12,13 +12,32 @@ import java.util.List;
  * @author 14489
  */
 @Service
-class OrderDetailServiceImp implements IOrderDetailService {
-    @Autowired
-    IOrderDetailDao detailDao;
+public class OrderDetailServiceImpl implements IOrderDetailService {
 
+    /**
+     * 订单明细
+     */
+    @Autowired
+    IOrderDetailDao iOrderDetailDao;
 
     @Override
     public List<OrderDetail> queryDetailByOrderId(Long orderId) {
-        return detailDao.queryDetailByOrderId(orderId);
+        return iOrderDetailDao.queryDetailByOrderId(orderId);
+    }
+
+    /**
+     * 添加一个订单明细
+     *
+     * @param orderDetail 订单明细
+     * @return
+     */
+    @Override
+    public Boolean addOrderDetail(OrderDetail orderDetail) {
+        return iOrderDetailDao.addOrderDetail(orderDetail);
+    }
+
+    @Override
+    public List<OrderDetail> queryDetailByOrderId(int orderId) {
+        return iOrderDetailDao.queryDetailByOrderId(orderId);
     }
 }

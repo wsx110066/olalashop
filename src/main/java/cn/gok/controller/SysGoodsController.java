@@ -1,7 +1,6 @@
 package cn.gok.controller;
 
 
-import cn.gok.beans.sys.Category;
 import cn.gok.beans.sys.RespBean;
 import cn.gok.beans.sys.SysGoods;
 import cn.gok.service.sys.ISysGoodsService;

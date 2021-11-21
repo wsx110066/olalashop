@@ -5,19 +5,31 @@
 
 <mapper namespace="cn.gok.dao.user.IConsigneeDao">
     <resultMap id="resultMapConsignee" type="cn.gok.beans.user.Consignee">
-        <id column="CUSTOMER_ADDR_ID" property="customerAddrId"></id>
-        <result column="CUSTOMER_ID" property="customerId"></result>
-        <result column="CUSTOMER_USERNAME" property="customerUsername"></result>
-        <result column="ZIP" property="zip"></result>
-        <result column="PROVINCE" property="province"></result>
-        <result column="CITY" property="city"></result>
-        <result column="DISTRICT" property="district"></result>
-        <result column="CUSTOMER_USERPHONE" property="customerUserphone"></result>
-        <result column="ADDRESS" property="address"></result>
-        <result column="IS_DEFAULT" property="isDefault"></result>
-        <result column="BACK_UP" property="backup"></result>
-        <result column="MODIFIED_TIME" property="modifiedtime"></result>
+        <id column="CUSTOMER_ADDR_ID" property="customerAddrId"/>
+        <result column="CUSTOMER_ID" property="customerId"/>
+        <result column="CUSTOMER_USERNAME" property="customerUsername"/>
+        <result column="ZIP" property="zip"/>
+        <result column="PROVINCE" property="province"/>
+        <result column="CITY" property="city"/>
+        <result column="DISTRICT" property="district"/>
+        <result column="CUSTOMER_USERPHONE" property="customerUserphone"/>
+        <result column="ADDRESS" property="address"/>
+        <result column="IS_DEFAULT" property="defaultIs"/>
+        <result column="BACK_UP" property="backup"/>
+        <result column="MODIFIED_TIME" property="modifiedtime"/>
     </resultMap>
+    <insert id="addConsignee">
+        insert into c_consignee (CUSTOMER_ID, CUSTOMER_USERNAME, ZIP, PROVINCE, CITY, DISTRICT, CUSTOMER_USERPHONE,
+                                 ADDRESS, IS_DEFAULT, BACK_UP, MODIFIED_TIME)
+        values (#{customerId}, #{customerUsername}, #{zip}, #{province}, #{city}, #{district}, #{customerUserphone},
+                #{address}, #{defaultIs}, #{backup}, #{modifiedtime})
+    </insert>
+
+    <select id="queryConsigneeByCustomerId" resultMap="resultMapConsignee">
+        select *
+        from c_consignee
+        where CUSTOMER_ID = #{customerId}
+    </select>
 
     <select id="queryUserConsignee" resultMap="resultMapConsignee">
         select * from c_consignee where CUSTOMER_ID=#{id}

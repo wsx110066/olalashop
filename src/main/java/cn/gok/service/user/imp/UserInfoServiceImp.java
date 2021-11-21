@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 public class UserInfoServiceImp implements IUserInfoService {
     @Autowired
     IUserInfoDao userInfoDao;
-    @Override
-    public int upadetUserInfo(String name, String realname,String tel,String email,String id){
-        return userInfoDao.upadetUserInfo(name, realname, tel, email,id);
-    }
 
     @Override
+    public int upadetUserInfo(String name, String realname, String tel, String email, String id){
+        return userInfoDao.upadetUserInfo(name,realname,tel,email,id);
+    }
+
     public UserInformation queryInfoByNameCustomId(String id) {
         return userInfoDao.queryInfoByNameCustomId(id);
     }

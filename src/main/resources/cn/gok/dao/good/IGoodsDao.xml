@@ -52,5 +52,9 @@
         </where>
     </select>
 
+    <select id="queryGoodById" resultMap="resultMapGoods">
+        select * from g_goods where GOODS_ID=#{id}
+    </select>
+
 </mapper>
 

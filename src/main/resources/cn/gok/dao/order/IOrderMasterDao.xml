@@ -28,5 +28,18 @@
         select * from o_order_master where CUSTOMER_ID=#{customerId}
     </select>
 
+    <insert id="addOrderMaster">
+        insert into o_order_master (ORDER_SN, TRANSATION_NO, CUSTOMER_ID, PAY_TYPE, PAY_TIME, ORDER_MONEY,
+                                    DISTRICT_MONEY, PAY_MONEY, CREATE_TIME, ORDER_STATUS, ORDER_POINT, MODIFIED_TIME)
+        values (#{orderSn}, #{transactionNo}, #{customerId}, #{payType}, #{payTime}, #{orderMoney},
+                #{districtMoney}, #{payMoney}, #{createTime}, #{orderStatus}, #{orderPoint}, #{modifiedTime})
+    </insert>
+
+    <select id="queryOrderMasterBySn" resultMap="resultMapOrderMaster">
+        select *
+        from o_order_master
+        where ORDER_SN = #{orderSn}
+    </select>
+
 </mapper>
 

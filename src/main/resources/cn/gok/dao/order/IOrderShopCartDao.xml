@@ -39,6 +39,12 @@
         where SHOP_CART_ID = #{shopCartId}
     </update>
 
+    <update id="updateAmountByShopCartID">
+        update o_shop_cart
+        set GOODS_AMOUNT = #{goodsAmount}
+        where SHOP_CART_ID = #{shopCartId}
+    </update>
+
     <delete id="deleteShopCartById">
         delete
         from o_shop_cart

@@ -1,18 +1,6 @@
 package cn.gok.beans.good;
 
-import java.sql.Timestamp;
-import java.util.List;
-
-/**
- * 商品类
- *
- * @author 14489
- */
-public class Goods {
-
-    /**
-     * 商品ID
-     */
+public class GoodDetail {
     private String goodsId;
 
     /**
@@ -59,7 +47,7 @@ public class Goods {
     /**
      * 生产日期
      */
-    private Timestamp effectiveDate;
+    private String effectiveDate;
 
 
     /**
@@ -112,13 +100,13 @@ public class Goods {
     /**
      * 促销开始时间
      */
-    private Timestamp promoteStartDate;
+    private String promoteStartDate;
 
 
     /**
      * 促销结束时间
      */
-    private Timestamp promoteEndDate;
+    private String promoteEndDate;
 
 
     /**
@@ -160,7 +148,7 @@ public class Goods {
     /**
      * 商品录入时间
      */
-    private Timestamp createTime;
+    private String createTime;
 
 
     /**
@@ -172,63 +160,19 @@ public class Goods {
     /**
      * 商品更新时间
      */
-    private Timestamp updateTime;
+    private String updateTime;
 
 
     /**
      * 更新者
      */
     private String updateBy;
-
-    private int monthSales;
-    private int countSales;
+    private String goodId;
+    private int monthSale;
+    private int countSale;
     private int countComms;
     private int commendScore;
-
-    private List<Picture> pictureVos;
-
-    public Goods() {
-    }
-
-    public int getMonthSales() {
-        return monthSales;
-    }
-
-    public void setMonthSales(int monthSales) {
-        this.monthSales = monthSales;
-    }
-
-    public int getCountSales() {
-        return countSales;
-    }
-
-    public void setCountSales(int countSales) {
-        this.countSales = countSales;
-    }
-
-    public int getCountComms() {
-        return countComms;
-    }
-
-    public void setCountComms(int countComms) {
-        this.countComms = countComms;
-    }
-
-    public int getCommendScore() {
-        return commendScore;
-    }
-
-    public void setCommendScore(int commendScore) {
-        this.commendScore = commendScore;
-    }
-
-    public List<Picture> getPictureVos() {
-        return pictureVos;
-    }
-
-    public void setPictureVos(List<Picture> pictureVos) {
-        this.pictureVos = pictureVos;
-    }
+    private Picture pictureVos;
 
     public String getGoodsId() {
         return goodsId;
@@ -294,11 +238,11 @@ public class Goods {
         this.businessSn = businessSn;
     }
 
-    public Timestamp getEffectiveDate() {
+    public String getEffectiveDate() {
         return effectiveDate;
     }
 
-    public void setEffectiveDate(Timestamp effectiveDate) {
+    public void setEffectiveDate(String effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 
@@ -366,19 +310,19 @@ public class Goods {
         this.promotePrice = promotePrice;
     }
 
-    public Timestamp getPromoteStartDate() {
+    public String getPromoteStartDate() {
         return promoteStartDate;
     }
 
-    public void setPromoteStartDate(Timestamp promoteStartDate) {
+    public void setPromoteStartDate(String promoteStartDate) {
         this.promoteStartDate = promoteStartDate;
     }
 
-    public Timestamp getPromoteEndDate() {
+    public String getPromoteEndDate() {
         return promoteEndDate;
     }
 
-    public void setPromoteEndDate(Timestamp promoteEndDate) {
+    public void setPromoteEndDate(String promoteEndDate) {
         this.promoteEndDate = promoteEndDate;
     }
 
@@ -430,11 +374,11 @@ public class Goods {
         this.sortOrl = sortOrl;
     }
 
-    public Timestamp getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
@@ -446,11 +390,11 @@ public class Goods {
         this.createBy = createBy;
     }
 
-    public Timestamp getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Timestamp updateTime) {
+    public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
 
@@ -462,38 +406,51 @@ public class Goods {
         this.updateBy = updateBy;
     }
 
-    @Override
-    public String toString() {
-        return "Goods{" +
-                "goodsId='" + goodsId + '\'' +
-                ", goodsSn='" + goodsSn + '\'' +
-                ", goodsName='" + goodsName + '\'' +
-                ", goodsTitle='" + goodsTitle + '\'' +
-                ", keywords='" + keywords + '\'' +
-                ", catyId='" + catyId + '\'' +
-                ", catySn='" + catySn + '\'' +
-                ", businessSn='" + businessSn + '\'' +
-                ", effectiveDate=" + effectiveDate +
-                ", expiryDays=" + expiryDays +
-                ", goodsBrief='" + goodsBrief + '\'' +
-                ", goodsDesc='" + goodsDesc + '\'' +
-                ", marketPrice=" + marketPrice +
-                ", discount=" + discount +
-                ", shopPrice=" + shopPrice +
-                ", costPrice=" + costPrice +
-                ", promotePrice=" + promotePrice +
-                ", promoteStartDate=" + promoteStartDate +
-                ", promoteEndDate=" + promoteEndDate +
-                ", couponSn='" + couponSn + '\'' +
-                ", delIs=" + delIs +
-                ", onSaleOn=" + onSaleOn +
-                ", commentIs=" + commentIs +
-                ", shipFee=" + shipFee +
-                ", sortOrl=" + sortOrl +
-                ", createTime=" + createTime +
-                ", createBy='" + createBy + '\'' +
-                ", updateTime=" + updateTime +
-                ", updateBy='" + updateBy + '\'' +
-                '}';
+    public String getGoodId() {
+        return goodId;
+    }
+
+    public void setGoodId(String goodId) {
+        this.goodId = goodId;
+    }
+
+    public int getMonthSale() {
+        return monthSale;
+    }
+
+    public void setMonthSale(int monthSale) {
+        this.monthSale = monthSale;
+    }
+
+    public int getCountSale() {
+        return countSale;
+    }
+
+    public void setCountSale(int countSale) {
+        this.countSale = countSale;
+    }
+
+    public int getCountComms() {
+        return countComms;
+    }
+
+    public void setCountComms(int countComms) {
+        this.countComms = countComms;
+    }
+
+    public int getCommendScore() {
+        return commendScore;
+    }
+
+    public void setCommendScore(int commendScore) {
+        this.commendScore = commendScore;
+    }
+
+    public Picture getPictureVos() {
+        return pictureVos;
+    }
+
+    public void setPictureVos(Picture pictureVos) {
+        this.pictureVos = pictureVos;
     }
 }

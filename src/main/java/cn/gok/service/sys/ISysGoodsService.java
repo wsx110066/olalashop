@@ -1,8 +1,6 @@
 package cn.gok.service.sys;
 
-import cn.gok.beans.sys.Category;
 import cn.gok.beans.sys.SysGoods;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;

@@ -2,7 +2,7 @@ package cn.gok.beans.sys;
 
 import java.io.Serializable;
 
-public class Category implements Serializable {
+public class SysCategory implements Serializable {
     public Integer categoryId;
     public String parentId;
     public String categoryName;
@@ -10,9 +10,9 @@ public class Category implements Serializable {
     public Integer sortOrl;
     public String catyDesc;
 
-    public Category(){}
+    public SysCategory(){}
 
-    public Category(Integer categoryId, String parentId, String categoryName, String keywords, Integer sortOrl, String catyDesc) {
+    public SysCategory(Integer categoryId, String parentId, String categoryName, String keywords, Integer sortOrl, String catyDesc) {
         this.categoryId = categoryId;
         this.parentId = parentId;
         this.categoryName = categoryName;

@@ -21,6 +21,15 @@ public class OrderDetail {
         this.goodName = goodName;
     }
 
+    public OrderDetail(int orderId, String goodsId, String goodsName, int goodsCnt, int goodsPrice, Timestamp modifiedTime) {
+        this.orderId = orderId;
+        this.goodsId = goodsId;
+        this.goodsName = goodsName;
+        this.goodsCnt = goodsCnt;
+        this.goodsPrice = goodsPrice;
+        this.modifiedTime = modifiedTime;
+    }
+
     public int getOrderDetailId() {
         return orderDetailId;
     }

@@ -12,7 +12,7 @@ import java.util.List;
 public interface ISysMemberDao {
     public Integer saveMember(sysMember sysmember);
     public sysMember queryMembersById(@Param("customerInfId") Integer customerInfId);
-    public List<sysMember> queryMembers(@Param("Version")Integer Version,@Param("sEcho") Integer sEcho,@Param("iDisplayStart") Integer iDisplayStart,@Param("iDisplayLength") Integer iDisplayLength);
+    public List<sysMember> queryMembers(@Param("Version")Integer Version, @Param("sEcho") Integer sEcho, @Param("iDisplayStart") Integer iDisplayStart, @Param("iDisplayLength") Integer iDisplayLength);
     public Integer removeMember(@Param("customerInfId")Integer customerInfId,@Param("isDel")Integer isDel);
     public Integer modifyDelStatusById(@Param("customerInfId")Integer customerInfId,@Param("isDel")Integer isDel);
     public Integer removeLevelById(@Param("customerLevelId")Integer customerLevelId);

@@ -65,6 +65,39 @@
         select * from c_customer_info a JOIN c_login_log b ON a.CUSTOMER_ID = b.CUSTOMER_ID LIMIT #{iDisplayStart},#{iDisplayLength}
     </select>
 
+    <select id="queryMembersById"  resultType="cn.gok.beans.sys.sysMember">
+        select * from c_customer_info where CUSTOMER_INF_ID = #{customerInfId}
+    </select>
+
+    <select id="queryMembers"  resultMap="resultMapGoods">
+        select * from c_customer_info LIMIT #{iDisplayStart},#{iDisplayLength};
+    </select>
+
+    <update id="removeMember">
+        update c_customer_info set IS_DEL = #{isDel} where CUSTOMER_INF_ID = #{customerInfId}
+    </update>
+
+    <update id="modifyDelStatusById">
+        update c_customer_info set IS_DEL = #{isDel} where CUSTOMER_INF_ID = #{customerInfId}
+    </update>
+
+    <update id="removeLevelById">
+        update c_level_info set LEVEL_STATUS = 0 where CUSTOMER_LEVEL_ID = #{customerLevelId}
+    </update>
+
+    <update id="updateMemberStatus">
+        update c_customer_info set CUSTOMER_STATUS = #{status} where CUSTOMER_INF_ID = #{customerInfId}
+    </update>
+
+    <update id="updateMemberPwd">
+        update c_login set PASSWORD = #{newPassword} where CUSTOMER_ID = #{customerId}
+    </update>
+
+    <select id="queryLoginLog" resultMap="resultMapGoods">
+        select * from c_customer_info a JOIN c_login_log b ON a.CUSTOMER_ID = b.CUSTOMER_ID LIMIT #{iDisplayStart},#{iDisplayLength}
+    </select>
+
+
 
 
 </mapper>

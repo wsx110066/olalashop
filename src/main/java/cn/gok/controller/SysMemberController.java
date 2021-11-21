@@ -5,37 +5,29 @@ import cn.gok.beans.sys.RespBean;
 import cn.gok.beans.sys.sysMember;
 import cn.gok.service.sys.ISysMemberService;
 
-import com.alibaba.druid.support.json.JSONParser;
 import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
 import java.util.List;
 
 
 /**
  * 新增会员信息接口
  */
-@ResponseBody
 @Controller
 @RequestMapping("/MemberApi")
-
 public class SysMemberController {
     @Autowired
     ISysMemberService iSysMemberService;
-
-
-    //新增会员
+    @ResponseBody
     @RequestMapping("/saveMember.do")
     public RespBean SaveMember(HttpServletRequest request ){
-        Integer customerInfId = Integer.parseInt(request.getParameter("customerInfId"));
-        String customerId =  (String)request.getParameter("customerId");
+        Integer customerInfId = 34; ///Integer.parseInt(request.getParameter("customerInfId"));
+        String customerId =  "15966103212";//(String)request.getParameter("customerId");
         String customerName =  (String)request.getParameter("customerName");
         String realName =  (String)request.getParameter("realName");
         Integer gender =  Integer.parseInt(request.getParameter("gender"));
@@ -66,6 +58,7 @@ public class SysMemberController {
         }
         return respBean;
     }
+
     //通过id寻找会员
     @RequestMapping("/queryMembersById.do")
     public RespBean QueryMembersById( HttpServletRequest request){
@@ -270,8 +263,6 @@ public class SysMemberController {
         return respBean;
 
     }
-
-
 
 
 }

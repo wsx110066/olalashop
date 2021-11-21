@@ -35,6 +35,6 @@
     </insert>
 
     <update id="upadetUserInfo">
-        update c_customer_info set CUSTOMER_NAME=#{name},REAL_NAME=#{realname},USER_MOBILE=#{tel},EMAIL=#{email} where CUSTOMER_ID=#{id}
+        update c_customer_info set CUSTOMER_NAME=#{name},REAL_NAME=#{realname},USER_MOBILE=#{tel},EMAIL=#{email},BIRTHDAY=#{birthday},GENDER=#{sex} where CUSTOMER_ID=#{id}
     </update>
 </mapper>

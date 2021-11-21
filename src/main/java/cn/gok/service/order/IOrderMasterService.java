@@ -9,4 +9,17 @@ import java.util.List;
  */
 public interface IOrderMasterService {
     public List<OrderMaster> queryOrderMaster(String customerId);
+
+    /**
+     * 生成订单主体
+     * @param customerId
+     * @param goodsIdArr
+     * @param amountArr
+     * @param priceArr
+     * @param orderMoney
+     * @return
+     */
+    Boolean addOrderMaster(String customerId, String goodsIdArr, String amountArr, String priceArr, String orderMoney);
+
+
 }
